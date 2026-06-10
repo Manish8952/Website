@@ -478,3 +478,42 @@ body {
     .about-grid { grid-template-columns: 1fr; gap: 30px; }
     .nav-links { display: none; } /* Simplified display structure layout for smaller screens */
 }
+/* ==========================================================================
+   ADDITIONAL ISOLATED FOOTER SOCIAL LINKS STYLES
+   ========================================================================== */
+.footer .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px; /* Separates the social icons from the copyright text below them */
+}
+
+.footer-socials {
+    display: flex;
+    gap: 20px; /* Clean spacing between each individual icon */
+    justify-content: center;
+    margin-bottom: 5px;
+}
+
+.social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.08); /* Sleek, dark-mode friendly circle base */
+    color: #cbd5e1; /* Smooth silver icon color */
+    font-size: 1.2rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Beautiful hover effects that make the buttons interactive */
+.social-icon:hover {
+    background-color: var(--primary-color); /* Turns your theme blue color on hover */
+    color: #ffffff;
+    transform: translateY(-4px); /* Clean floating bounce effect */
+    box-shadow: 0 5px 15px rgba(37, 99, 235, 0.4);
+}
