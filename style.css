@@ -517,3 +517,52 @@ body {
     transform: translateY(-4px); /* Clean floating bounce effect */
     box-shadow: 0 5px 15px rgba(37, 99, 235, 0.4);
 }
+/* ==========================================================================
+   OFFICIAL BRAND COLORS HOVER ENGINE
+   ========================================================================== */
+
+/* Keeps the standard smooth float movement for all social buttons */
+.social-icon:hover {
+    color: #ffffff !important; /* Forces the inner icon to turn crisp white */
+    transform: translateY(-4px); 
+}
+
+/* 1. YouTube Custom Hover Red */
+.social-icon:hover .fa-youtube {
+    transition: var(--transition);
+}
+.social-icon:has(.fa-youtube):hover {
+    background-color: #ff0000; /* Official YouTube Brand Red */
+    border-color: #ff0000;
+    box-shadow: 0 5px 15px rgba(255, 0, 0, 0.4);
+}
+
+/* 2. GitHub Custom Hover Dark Slate */
+.social-icon:hover .fa-github {
+    transition: var(--transition);
+}
+.social-icon:has(.fa-github):hover {
+    background-color: #24292e; /* Official GitHub Deep Black/Slate */
+    border-color: #24292e;
+    box-shadow: 0 5px 15px rgba(36, 41, 46, 0.4);
+}
+
+/* 3. Facebook Custom Hover Blue */
+.social-icon:hover .fa-facebook-f {
+    transition: var(--transition);
+}
+.social-icon:has(.fa-facebook-f):hover {
+    background-color: #1877f2; /* Official Facebook Blue */
+    border-color: #1877f2;
+    box-shadow: 0 5px 15px rgba(24, 119, 242, 0.4);
+}
+
+/* 4. LinkedIn Custom Hover Corporate Blue */
+.social-icon:hover .fa-linkedin-in {
+    transition: var(--transition);
+}
+.social-icon:has(.fa-linkedin-in):hover {
+    background-color: #0077b5; /* Official LinkedIn Blue */
+    border-color: #0077b5;
+    box-shadow: 0 5px 15px rgba(0, 119, 181, 0.4);
+}
