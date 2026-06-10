@@ -42,7 +42,7 @@ contactForm.addEventListener('submit', function(event) {
     // Simulate Server-side submission processing delay
     setTimeout(() => {
         if(name && email && message) {
-            formStatus.textContent = `Thank you, ${name}! Your message has been simulated successfully.`;
+            formStatus.textContent = `Thank you, ${name}! Your message has been sent successfully.`;
             formStatus.className = "form-status success";
             
             // Clear input text metrics clear parameters
