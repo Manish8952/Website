@@ -63,6 +63,19 @@ body {
     overflow-x: hidden;
 }
 
+/* ── #bg-canvas: primary visible imagery layer ───────────────────────────── */
+/*    background.js draws nature / physics / electronics into this element.   */
+/*    Add  <canvas id="bg-canvas"></canvas>  to your HTML just before </body> */
+#bg-canvas {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    pointer-events: none;
+    display: block;
+}
+
 /* ── Layer A (html::before) — Floating nature orb, top-left ─────────────── */
 html::before {
     content: "";
@@ -103,8 +116,8 @@ body::before {
     position: fixed;
     inset: 0;
     pointer-events: none;
-    z-index: -1;
-    opacity: 0.13;
+    z-index: -2;
+    opacity: 0.08;
     background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100'><line x1='50' y1='0' x2='50' y2='42' stroke='%232563eb' stroke-width='0.5' stroke-opacity='0.3'/><line x1='50' y1='58' x2='50' y2='100' stroke='%232563eb' stroke-width='0.5' stroke-opacity='0.3'/><line x1='0' y1='50' x2='42' y2='50' stroke='%232563eb' stroke-width='0.5' stroke-opacity='0.3'/><line x1='58' y1='50' x2='100' y2='50' stroke='%232563eb' stroke-width='0.5' stroke-opacity='0.3'/><circle cx='50' cy='50' r='3' fill='none' stroke='%232563eb' stroke-width='0.8' stroke-opacity='0.5'/><circle cx='50' cy='50' r='1.2' fill='%2310b981' fill-opacity='0.7'/><path d='M0 25 C10 18,20 18,30 25 C40 32,50 32,60 25 C70 18,80 18,90 25' fill='none' stroke='%2310b981' stroke-width='0.4' stroke-opacity='0.2'/><path d='M0 80 L22 80 L22 100' fill='none' stroke='%2310b981' stroke-width='0.5' stroke-opacity='0.25'/><path d='M80 0 L80 22 L100 22' fill='none' stroke='%236366f1' stroke-width='0.5' stroke-opacity='0.2'/><circle cx='22' cy='80' r='1.5' fill='none' stroke='%2310b981' stroke-width='0.6' stroke-opacity='0.35'/><circle cx='80' cy='22' r='1.5' fill='none' stroke='%236366f1' stroke-width='0.6' stroke-opacity='0.35'/><rect x='62' y='47' width='10' height='6' rx='1' fill='none' stroke='%232563eb' stroke-width='0.5' stroke-opacity='0.25'/></svg>");
     background-size: 100px 100px;
     animation: circuitDrift 90s linear infinite;
@@ -115,7 +128,7 @@ body::after {
     content: "";
     position: fixed;
     inset: 0;
-    z-index: -2;
+    z-index: -3;
     background-image:
         /* 🌿 Nature — emerald forest bloom */
         radial-gradient(ellipse 70% 60% at 14% 18%, rgba(16,185,129,0.09) 0%, transparent 65%),
@@ -141,7 +154,7 @@ body::after {
 }
 
 [data-theme="dark"] body::before {
-    opacity: 0.22;
+    opacity: 0.15;
     background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100'><line x1='50' y1='0' x2='50' y2='42' stroke='%2338bdf8' stroke-width='0.5' stroke-opacity='0.35'/><line x1='50' y1='58' x2='50' y2='100' stroke='%2338bdf8' stroke-width='0.5' stroke-opacity='0.35'/><line x1='0' y1='50' x2='42' y2='50' stroke='%2338bdf8' stroke-width='0.5' stroke-opacity='0.35'/><line x1='58' y1='50' x2='100' y2='50' stroke='%2338bdf8' stroke-width='0.5' stroke-opacity='0.35'/><circle cx='50' cy='50' r='3' fill='none' stroke='%2338bdf8' stroke-width='0.8' stroke-opacity='0.55'/><circle cx='50' cy='50' r='1.2' fill='%2334d399' fill-opacity='0.75'/><path d='M0 25 C10 18,20 18,30 25 C40 32,50 32,60 25 C70 18,80 18,90 25' fill='none' stroke='%2334d399' stroke-width='0.4' stroke-opacity='0.25'/><path d='M0 80 L22 80 L22 100' fill='none' stroke='%2334d399' stroke-width='0.5' stroke-opacity='0.3'/><path d='M80 0 L80 22 L100 22' fill='none' stroke='%23a78bfa' stroke-width='0.5' stroke-opacity='0.25'/><circle cx='22' cy='80' r='1.5' fill='none' stroke='%2334d399' stroke-width='0.6' stroke-opacity='0.4'/><circle cx='80' cy='22' r='1.5' fill='none' stroke='%23a78bfa' stroke-width='0.6' stroke-opacity='0.4'/><rect x='62' y='47' width='10' height='6' rx='1' fill='none' stroke='%2338bdf8' stroke-width='0.5' stroke-opacity='0.3'/></svg>");
 }
 
