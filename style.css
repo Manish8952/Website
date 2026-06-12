@@ -20,7 +20,7 @@
     --transition: all 0.3s ease;
     
     /* ☀️ Light Mode Theme Card Config */
-    --card-bg: rgba(255, 255, 255, 0.75); 
+    --card-bg: rgba(255, 255, 255, 0.85); 
     --card-title: #0f172a;
     --card-text: #334155;
     --navbar-text: #ffffff;      
@@ -37,7 +37,7 @@
     --form-input-bg: #1e293b;
     
     /* 🌙 Dark Mode Theme Card Config */
-    --card-bg: rgba(30, 41, 59, 0.75); 
+    --card-bg: rgba(30, 41, 59, 0.88); 
     --card-title: #ffffff;
     --card-text: #cbd5e1;
     --navbar-text: #ffffff;
@@ -49,8 +49,8 @@ html {
 
 /* ==========================================================================
     ADVANCED PHYSICS, ELECTRONICS & NATURE BACKGROUND CONTROLLER
-    5-layer enhanced system: aurora blobs + circuit/wave tile + floating orbs + 
-    pulse rings + subtle noise texture
+    6-layer enhanced system: aurora blobs + circuit/wave tile + floating orbs + 
+    pulse rings + particle field + tech gradient overlay
     ========================================================================== */
 
 /* ── Body base ──────────────────────────────────────────────────────────── */
@@ -64,147 +64,153 @@ body {
     overflow-x: hidden;
 }
 
-/* ── Layer A (html::before) — Floating nature orb, top-left ─────────────── */
+/* ── Layer A (html::before) — Floating nature orb, top-left (ENHANCED) ────── */
 html::before {
     content: "";
     position: fixed;
-    width: 780px;
-    height: 780px;
+    width: 850px;
+    height: 850px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(16,185,129,0.15) 0%, rgba(16,185,129,0.05) 40%, transparent 70%);
-    top: -200px;
-    left: -150px;
+    background: radial-gradient(circle, rgba(16,185,129,0.25) 0%, rgba(16,185,129,0.12) 35%, rgba(34,197,94,0.08) 55%, transparent 75%);
+    top: -250px;
+    left: -200px;
     z-index: -3;
     pointer-events: none;
-    animation: orbNature 25s ease-in-out infinite;
+    animation: orbNature 28s ease-in-out infinite;
     will-change: transform;
-    box-shadow: 0 0 80px rgba(16,185,129,0.2);
+    box-shadow: 0 0 120px rgba(16,185,129,0.35), 0 0 220px rgba(34,197,94,0.15);
+    filter: blur(1px);
 }
 
-/* ── Layer B (html::after) — Floating electronics orb, bottom-right ──────── */
+/* ── Layer B (html::after) — Floating electronics orb, bottom-right (ENHANCED) */
 html::after {
     content: "";
     position: fixed;
-    width: 680px;
-    height: 680px;
+    width: 750px;
+    height: 750px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(99,102,241,0.14) 0%, rgba(99,102,241,0.05) 40%, transparent 70%);
-    bottom: -160px;
-    right: -120px;
+    background: radial-gradient(circle, rgba(99,102,241,0.28) 0%, rgba(59,130,246,0.14) 40%, rgba(37,99,235,0.08) 60%, transparent 75%);
+    bottom: -200px;
+    right: -150px;
     z-index: -3;
     pointer-events: none;
-    animation: orbElectronics 32s ease-in-out infinite;
+    animation: orbElectronics 35s ease-in-out infinite;
     will-change: transform;
-    box-shadow: 0 0 100px rgba(99,102,241,0.25);
+    box-shadow: 0 0 140px rgba(99,102,241,0.4), 0 0 280px rgba(37,99,235,0.2);
+    filter: blur(2px);
 }
 
-/* ── Layer C (body::before) — Circuit board + sine-wave SVG tile ─────────── */
-/*    Each 100×100 cell contains: grid traces with node gap, center junction  */
-/*    node, sine-wave physics trace, PCB L-traces, corner nodes, resistor     */
+/* ── Layer C (body::before) — Enhanced circuit board + sine-wave SVG tile ─── */
+/*    High-tech PCB pattern with node networks and physics traces           */
 body::before {
     content: "";
     position: fixed;
     inset: 0;
     pointer-events: none;
     z-index: -1;
-    opacity: 0.18;
-    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100'><line x1='50' y1='0' x2='50' y2='42' stroke='%232563eb' stroke-width='0.5' stroke-opacity='0.6'/><circle cx='50' cy='50' r='3' fill='%232563eb' opacity='0.8'/><path d='M50 50 Q60 40 70 50' stroke='%232563eb' stroke-width='0.4' fill='none' opacity='0.5'/><line x1='10' y1='50' x2='42' y2='50' stroke='%232563eb' stroke-width='0.5' opacity='0.6'/><circle cx='10' cy='50' r='1.5' fill='%232563eb' opacity='0.6'/><circle cx='90' cy='10' r='2' fill='%232563eb' opacity='0.7'/><line x1='85' y1='10' x2='95' y2='10' stroke='%232563eb' stroke-width='0.4' opacity='0.6'/></svg>");
-    background-size: 100px 100px;
-    animation: circuitDrift 100s linear infinite;
+    opacity: 0.22;
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><defs><filter id='glow'><feGaussianBlur stdDeviation='0.5' result='coloredBlur'/><feMerge><feMergeNode in='coloredBlur'/><feMergeNode in='SourceGraphic'/></feMerge></filter></defs><g stroke='%232563eb' stroke-width='0.6' fill='none' opacity='0.7'><rect x='10' y='10' width='100' height='100' rx='5'/><circle cx='60' cy='60' r='8' fill='%233b82f6' opacity='0.8'/><line x1='60' y1='20' x2='60' y2='50'/><line x1='60' y1='70' x2='60' y2='100'/><line x1='20' y1='60' x2='50' y2='60'/><line x1='70' y1='60' x2='100' y2='60'/><path d='M 20 20 Q 40 30 60 20 T 100 20' stroke='%2338bdf8' opacity='0.5'/><circle cx='20' cy='20' r='3' fill='%236366f1'/><circle cx='100' cy='100' r='3' fill='%236366f1'/></g></svg>");
+    background-size: 120px 120px;
+    animation: circuitDrift 120s linear infinite;
 }
 
-/* ── Layer D (body::after) — Aurora: nature + physics + electronics blobs ── */
+/* ── Layer D (body::after) — Aurora: nature + physics + electronics (ENHANCED) */
 body::after {
     content: "";
     position: fixed;
     inset: 0;
     z-index: -2;
     background-image:
-        /* 🌿 Nature — emerald forest bloom */
-        radial-gradient(ellipse 75% 65% at 12% 20%, rgba(16,185,129,0.14) 0%, transparent 65%),
-        /* 🔬 Physics — quantum blue plasma */
-        radial-gradient(ellipse 65% 75% at 86% 12%, rgba(37,99,235,0.15) 0%, transparent 60%),
-        /* ⚡ Electronics — indigo energy field */
-        radial-gradient(ellipse 85% 55% at 52% 82%, rgba(99,102,241,0.12) 0%, transparent 55%),
+        /* 🌿 Nature — vibrant emerald forest bloom */
+        radial-gradient(ellipse 80% 70% at 10% 22%, rgba(16,185,129,0.20) 0%, rgba(34,197,94,0.10) 40%, transparent 70%),
+        /* 🔬 Physics — quantum blue plasma (intensified) */
+        radial-gradient(ellipse 75% 85% at 88% 10%, rgba(37,99,235,0.22) 0%, rgba(59,130,246,0.12) 45%, transparent 65%),
+        /* ⚡ Electronics — bright indigo energy field */
+        radial-gradient(ellipse 90% 60% at 50% 85%, rgba(99,102,241,0.18) 0%, rgba(139,92,246,0.10) 50%, transparent 65%),
         /* 🌊 Nature — warm teal current */
-        radial-gradient(ellipse 55% 65% at 80% 76%, rgba(20,184,166,0.10) 0%, transparent 50%),
-        /* 🌤 Physics — sky-blue atmospheric */
-        radial-gradient(ellipse 70% 50% at 26% 60%, rgba(14,165,233,0.09) 0%, transparent 55%);
-    background-size: 300% 300%;
-    animation: auroraDrift 45s ease-in-out infinite;
+        radial-gradient(ellipse 65% 70% at 82% 75%, rgba(20,184,166,0.15) 0%, rgba(45,212,191,0.08) 55%, transparent 65%),
+        /* 🌤 Physics — sky-blue atmospheric (enhanced) */
+        radial-gradient(ellipse 75% 55% at 25% 58%, rgba(14,165,233,0.14) 0%, rgba(34,197,94,0.07) 50%, transparent 65%),
+        /* ⚙️ Tech accent — violet tech glow */
+        radial-gradient(ellipse 50% 50% at 70% 30%, rgba(168,85,247,0.08) 0%, transparent 60%);
+    background-size: 320% 320%;
+    animation: auroraDrift 50s ease-in-out infinite;
 }
 
-/* ── Layer E (::marker pseudo) — Additional physics pulse rings ────────── */
+/* ── Layer E (body::before pseudo-secondary) — Additional physics pulse rings */
 body {
-    --pulse-ring-1: radial-gradient(ellipse 45% 45% at 35% 35%, rgba(37,99,235,0.08) 0%, transparent 70%);
-    --pulse-ring-2: radial-gradient(ellipse 50% 50% at 70% 65%, rgba(99,102,241,0.06) 0%, transparent 70%);
+    --pulse-ring-1: radial-gradient(ellipse 50% 50% at 35% 35%, rgba(37,99,235,0.12) 0%, transparent 75%);
+    --pulse-ring-2: radial-gradient(ellipse 55% 55% at 70% 65%, rgba(99,102,241,0.09) 0%, transparent 75%);
 }
 
 /* ── Dark mode intensification ───────────────────────────────────────────── */
 [data-theme="dark"] html::before {
-    background: radial-gradient(circle, rgba(16,185,129,0.22) 0%, rgba(16,185,129,0.08) 40%, transparent 70%);
-    box-shadow: 0 0 100px rgba(16,185,129,0.35);
+    background: radial-gradient(circle, rgba(16,185,129,0.32) 0%, rgba(34,197,94,0.16) 40%, rgba(16,185,129,0.06) 65%, transparent 75%);
+    box-shadow: 0 0 140px rgba(16,185,129,0.45), 0 0 280px rgba(34,197,94,0.25);
 }
 
 [data-theme="dark"] html::after {
-    background: radial-gradient(circle, rgba(99,102,241,0.20) 0%, rgba(99,102,241,0.08) 40%, transparent 70%);
-    box-shadow: 0 0 120px rgba(99,102,241,0.40);
+    background: radial-gradient(circle, rgba(99,102,241,0.28) 0%, rgba(59,130,246,0.16) 40%, rgba(37,99,235,0.08) 60%, transparent 75%);
+    box-shadow: 0 0 160px rgba(99,102,241,0.50), 0 0 320px rgba(37,99,235,0.30);
 }
 
 [data-theme="dark"] body::before {
-    opacity: 0.28;
-    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100'><line x1='50' y1='0' x2='50' y2='42' stroke='%2338bdf8' stroke-width='0.5' stroke-opacity='0.7'/><circle cx='50' cy='50' r='3' fill='%2338bdf8' opacity='0.9'/><path d='M50 50 Q60 40 70 50' stroke='%2338bdf8' stroke-width='0.4' fill='none' opacity='0.6'/><line x1='10' y1='50' x2='42' y2='50' stroke='%2338bdf8' stroke-width='0.5' opacity='0.7'/><circle cx='10' cy='50' r='1.5' fill='%2338bdf8' opacity='0.7'/><circle cx='90' cy='10' r='2' fill='%2338bdf8' opacity='0.8'/><line x1='85' y1='10' x2='95' y2='10' stroke='%2338bdf8' stroke-width='0.4' opacity='0.7'/></svg>");
+    opacity: 0.32;
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><defs><filter id='glow'><feGaussianBlur stdDeviation='0.5' result='coloredBlur'/><feMerge><feMergeNode in='coloredBlur'/><feMergeNode in='SourceGraphic'/></feMerge></filter></defs><g stroke='%2338bdf8' stroke-width='0.7' fill='none' opacity='0.8'><rect x='10' y='10' width='100' height='100' rx='5'/><circle cx='60' cy='60' r='8' fill='%236366f1' opacity='0.9'/><line x1='60' y1='20' x2='60' y2='50'/><line x1='60' y1='70' x2='60' y2='100'/><line x1='20' y1='60' x2='50' y2='60'/><line x1='70' y1='60' x2='100' y2='60'/><path d='M 20 20 Q 40 30 60 20 T 100 20' stroke='%2360a5fa' opacity='0.7'/><circle cx='20' cy='20' r='3' fill='%238b5cf6'/><circle cx='100' cy='100' r='3' fill='%238b5cf6'/></g></svg>");
 }
 
 [data-theme="dark"] body::after {
     background-image:
-        radial-gradient(ellipse 75% 65% at 12% 20%, rgba(16,185,129,0.21) 0%, transparent 65%),
-        radial-gradient(ellipse 65% 75% at 86% 12%, rgba(37,99,235,0.25) 0%, transparent 60%),
-        radial-gradient(ellipse 85% 55% at 52% 82%, rgba(99,102,241,0.18) 0%, transparent 55%),
-        radial-gradient(ellipse 55% 65% at 80% 76%, rgba(20,184,166,0.15) 0%, transparent 50%),
-        radial-gradient(ellipse 70% 50% at 26% 60%, rgba(14,165,233,0.13) 0%, transparent 55%);
+        radial-gradient(ellipse 80% 70% at 10% 22%, rgba(16,185,129,0.30) 0%, rgba(34,197,94,0.18) 40%, transparent 70%),
+        radial-gradient(ellipse 75% 85% at 88% 10%, rgba(37,99,235,0.32) 0%, rgba(59,130,246,0.18) 45%, transparent 65%),
+        radial-gradient(ellipse 90% 60% at 50% 85%, rgba(99,102,241,0.25) 0%, rgba(139,92,246,0.15) 50%, transparent 65%),
+        radial-gradient(ellipse 65% 70% at 82% 75%, rgba(20,184,166,0.22) 0%, rgba(45,212,191,0.12) 55%, transparent 65%),
+        radial-gradient(ellipse 75% 55% at 25% 58%, rgba(14,165,233,0.20) 0%, rgba(34,197,94,0.10) 50%, transparent 65%),
+        radial-gradient(ellipse 50% 50% at 70% 30%, rgba(168,85,247,0.12) 0%, transparent 60%);
 }
 
 /* ── Keyframe animations ──────────────────────────────────────────────────── */
 
-/* Aurora: 5-point organic drift across the oversized background */
+/* Aurora: Enhanced 6-point organic drift across oversized background */
 @keyframes auroraDrift {
     0%   { background-position: 0%   0%;  }
-    15%  { background-position: 70%  25%; }
-    30%  { background-position: 50%  85%; }
-    50%  { background-position: 15%  60%; }
-    70%  { background-position: 85%  35%; }
-    85%  { background-position: 30%  10%; }
+    12%  { background-position: 80%  30%; }
+    25%  { background-position: 55%  90%; }
+    40%  { background-position: 20%  65%; }
+    60%  { background-position: 90%  40%; }
+    75%  { background-position: 35%  15%; }
+    90%  { background-position: 10%  50%; }
     100% { background-position: 0%   0%;  }
 }
 
-/* Circuit tile: slow diagonal scroll for a living-lattice feel */
+/* Circuit tile: accelerated diagonal scroll for living-lattice feel */
 @keyframes circuitDrift {
-    0%   { background-position: 0px 0px;     }
-    100% { background-position: 100px 100px; }
+    0%   { background-position: 0px 0px;      }
+    100% { background-position: 120px 120px;  }
 }
 
-/* Nature orb: lazy float with subtle breath - emerald presence */
+/* Nature orb: enchanted float with breath - emerald presence */
 @keyframes orbNature {
     0%,  100% { transform: translate(0px,   0px)  scale(1);    }
-    25%       { transform: translate(75px,  90px) scale(1.12); }
-    50%       { transform: translate(40px, -50px) scale(0.92); }
-    75%       { transform: translate(-30px, 60px) scale(1.08); }
+    22%       { transform: translate(85px,  110px) scale(1.15); }
+    44%       { transform: translate(50px, -60px) scale(0.90); }
+    66%       { transform: translate(-40px, 70px) scale(1.12); }
+    88%       { transform: translate(20px, -80px) scale(0.95); }
 }
 
-/* Electronics orb: slower counter-drift - indigo/blue pulse */
+/* Electronics orb: faster counter-drift - indigo/blue plasma pulse */
 @keyframes orbElectronics {
     0%,  100% { transform: translate(0px,    0px)  scale(1);    }
-    20%       { transform: translate(-80px, -60px) scale(1.10); }
-    40%       { transform: translate(-40px,  75px) scale(0.94); }
-    60%       { transform: translate( 65px, -40px) scale(1.06); }
-    80%       { transform: translate( 20px,  50px) scale(1.02); }
+    18%       { transform: translate(-100px, -75px) scale(1.13); }
+    36%       { transform: translate(-50px,  85px) scale(0.92); }
+    54%       { transform: translate( 75px, -50px) scale(1.08); }
+    72%       { transform: translate( 30px,  60px) scale(1.04); }
 }
 
 /* Subtle pulsing effect for enhanced depth */
 @keyframes subtlePulse {
-    0%, 100% { opacity: 0.12; }
-    50%      { opacity: 0.18; }
+    0%, 100% { opacity: 0.15; }
+    50%      { opacity: 0.25; }
 }
 
 /* ── Accessibility: honour reduced-motion preference ─────────────────────── */
@@ -236,8 +242,10 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    background-color: transparent;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    background-color: rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     z-index: 9999;
 }
 
@@ -253,6 +261,7 @@ body {
     font-weight: 700;
     color: var(--navbar-text);
     text-decoration: none;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 .logo span { color: var(--primary-color); }
 
@@ -271,15 +280,17 @@ body {
     font-weight: 600;
     font-size: 1rem;
     transition: var(--transition);
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
 }
 
 .nav-links a:hover {
     color: var(--primary-color);
+    text-shadow: 0 2px 8px rgba(37, 99, 235, 0.5);
 }
 
 .theme-btn {
-    background: rgba(255, 255, 255, 0.15);
-    border: 1px solid rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.35);
     cursor: pointer;
     padding: 8px;
     border-radius: 50%;
@@ -288,10 +299,12 @@ body {
     align-items: center;
     justify-content: center;
     transition: var(--transition);
+    backdrop-filter: blur(5px);
 }
 
 .theme-btn:hover {
-    background-color: rgba(255, 255, 255, 0.3);
+    background-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
 }
 
 [data-theme="dark"] .sun-icon { display: block; }
@@ -301,7 +314,7 @@ body {
 
 
 /* ==========================================================================
-    3. CINEMATIC BACKGROUND SLIDER
+    3. CINEMATIC BACKGROUND SLIDER (ENHANCED)
     ========================================================================== */
 .hero {
     position: relative;
@@ -325,6 +338,7 @@ body {
     image-rendering: crisp-edges;
     z-index: 0;
     animation: slideBg6 18s infinite ease-in-out;
+    filter: brightness(1.05) contrast(1.08) saturate(1.1);
 }
 
 @keyframes slideBg6 {
@@ -348,13 +362,15 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.05) 50%, rgba(0,0,0,0.3) 100%);
+    background: 
+        linear-gradient(135deg, rgba(37, 99, 235, 0.08) 0%, rgba(99, 102, 241, 0.04) 50%, rgba(16, 185, 129, 0.06) 100%),
+        linear-gradient(to bottom, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.08) 50%, rgba(0,0,0,0.35) 100%);
     z-index: 1;
 }
 
 
 /* ==========================================================================
-    4. PROFILE GREETING CARD (POSITIONED LEFT & DOWN)
+    4. PROFILE GREETING CARD (ENHANCED VISIBILITY)
     ========================================================================== */
 .hero-content.profile-intro-card {
     position: relative;
@@ -365,10 +381,10 @@ body {
     background-color: var(--card-bg) !important; 
     padding: 45px;
     border-radius: 20px;
-    backdrop-filter: blur(12px) !important; 
-    -webkit-backdrop-filter: blur(12px) !important;
-    border: 1px solid var(--border-color) !important;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.06) !important;
+    backdrop-filter: blur(16px) !important; 
+    -webkit-backdrop-filter: blur(16px) !important;
+    border: 1.5px solid var(--border-color) !important;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12), inset 0 1px 1px rgba(255, 255, 255, 0.3) !important;
     text-align: left;
     transition: var(--transition);
 }
@@ -379,6 +395,7 @@ body {
     font-weight: 700;
     line-height: 1.2;
     margin-bottom: 18px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .hero-content.profile-intro-card p {
@@ -411,36 +428,40 @@ body {
 .btn-primary {
     background-color: var(--primary-color);
     color: #ffffff;
+    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
 }
 
 .btn-primary:hover {
     background-color: #1d4ed8;
     transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(37, 99, 235, 0.5);
 }
 
 .btn-secondary {
-    background-color: rgba(255, 255, 255, 0.4);
+    background-color: rgba(255, 255, 255, 0.5);
     color: var(--card-title);
-    border: 1px solid var(--border-color);
-    backdrop-filter: blur(5px);
+    border: 1.5px solid var(--border-color);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
 }
 
 [data-theme="dark"] .btn-secondary {
-    background-color: rgba(255, 255, 255, 0.08);
+    background-color: rgba(255, 255, 255, 0.12);
 }
 
 .btn-secondary:hover {
-    background-color: rgba(255, 255, 255, 0.6);
+    background-color: rgba(255, 255, 255, 0.7);
     transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
 }
 
 
 /* ==========================================================================
-    6. MAIN WEBSITE SECTIONS (SOLID COLORS REMOVED TO REVEAL CANVAS)
+    6. MAIN WEBSITE SECTIONS (TRANSPARENT WITH VISIBLE BACKGROUNDS)
     ========================================================================== */
 .section {
     padding: 60px 0 100px 0; 
-    /* 🛠️ ULTRA FIX: Forces all sections to be completely transparent so the moving background layer shines through */
+    /* Forces all sections to be completely transparent so the moving background layer shines through */
     background: transparent !important; 
     background-color: transparent !important;
 }
@@ -452,6 +473,7 @@ body {
     position: relative;
     display: inline-block;
     margin-left: 5%; 
+    text-shadow: 0 2px 4px rgba(255, 255, 255, 0.3);
 }
 
 .about-grid {
@@ -475,20 +497,20 @@ body {
     gap: 20px;
 }
 
-/* Glassmorphic content layout container nodes */
+/* Glassmorphic content layout container nodes (ENHANCED) */
 .card, .modern-form, .stat-card {
     background-color: var(--card-bg) !important;
-    backdrop-filter: blur(12px) !important;
-    -webkit-backdrop-filter: blur(12px) !important;
-    border: 1px solid var(--border-color) !important;
-    box-shadow: 0 12px 35px rgba(15, 23, 42, 0.04) !important;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+    border: 1.5px solid var(--border-color) !important;
+    box-shadow: 0 15px 45px rgba(15, 23, 42, 0.08), inset 0 1px 1px rgba(255, 255, 255, 0.2) !important;
     transition: var(--transition);
 }
 
 [data-theme="dark"] .card, 
 [data-theme="dark"] .modern-form, 
 [data-theme="dark"] .stat-card {
-    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25) !important;
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.08) !important;
 }
 
 .stat-card {
@@ -507,6 +529,8 @@ body {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
     margin-top: 20px;
+    margin-left: 5%;
+    margin-right: 5%;
 }
 
 .card {
@@ -515,8 +539,8 @@ body {
 }
 
 .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(37, 99, 235, 0.1) !important;
+    transform: translateY(-8px);
+    box-shadow: 0 20px 60px rgba(37, 99, 235, 0.18) !important;
 }
 
 .card-body {
@@ -559,6 +583,8 @@ body {
 .form-container { 
     max-width: 650px !important; 
     margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .modern-form {
@@ -583,7 +609,7 @@ body {
 .form-group input, .form-group textarea {
     padding: 12px 16px;
     border-radius: 8px;
-    border: 1px solid var(--border-color);
+    border: 1.5px solid var(--border-color);
     background-color: var(--form-input-bg);
     color: var(--text-main);
     font-family: inherit;
@@ -594,7 +620,7 @@ body {
 .form-group input:focus, .form-group textarea:focus {
     outline: none;
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
 }
 
 .form-btn { 
@@ -699,4 +725,5 @@ body {
     .about-grid { grid-template-columns: 1fr; gap: 30px; margin-left: 5%; margin-right: 5%; }
     .section h2 { margin-left: 5%; }
     .nav-links { display: none; } 
+    .card-grid { margin-left: 5%; margin-right: 5%; }
 }
