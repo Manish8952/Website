@@ -1,5 +1,4 @@
 /* ==========================================================================
-  /* ==========================================================================
    1. MODERN CORE RESET & CONFIGURATION
    ========================================================================== */
 * {
@@ -10,35 +9,35 @@
 
 /* Default Light Theme Variables */
 :root {
-    --primary-color: #2564eb;
-    --secondary-color: #0f172a;  /* Dark text & headers */
-    --text-main: #334155;        /* Crisp charcoal body text */
+    --primary-color: #2563eb;
+    --secondary-color: #0f172a;  
+    --text-main: #334155;        
     --text-muted: #64748b;
-    --bg-light: #f8fafc;
+    --bg-light: rgba(248, 250, 252, 0.4); 
     --bg-white: #ffffff;
     --border-color: rgba(0, 0, 0, 0.08);
     --form-input-bg: #ffffff;
     --transition: all 0.3s ease;
     
     /* ☀️ Light Mode Theme Card Config */
-    --card-bg: rgba(255, 255, 255, 0.9); 
+    --card-bg: rgba(255, 255, 255, 0.75); 
     --card-title: #0f172a;
     --card-text: #334155;
-    --navbar-text: #ffffff;      /* Keeps top navbar links white over background artwork */
+    --navbar-text: #ffffff;      
 }
 
 /* Dark Theme Variables Overrides */
 [data-theme="dark"] {
-    --secondary-color: #ffffff;  /* White headers */
-    --text-main: #cbd5e1;        /* Silver body text */
+    --secondary-color: #ffffff;  
+    --text-main: #cbd5e1;        
     --text-muted: #94a3b8;
-    --bg-light: #0f172a;
+    --bg-light: rgba(30, 41, 59, 0.4);   
     --bg-white: #0f172a;
     --border-color: rgba(255, 255, 255, 0.1);
     --form-input-bg: #1e293b;
     
     /* 🌙 Dark Mode Theme Card Config */
-    --card-bg: rgba(15, 23, 42, 0.85); 
+    --card-bg: rgba(30, 41, 59, 0.75); 
     --card-title: #ffffff;
     --card-text: #cbd5e1;
     --navbar-text: #ffffff;
@@ -48,12 +47,153 @@ html {
     scroll-behavior: smooth;
 }
 
+/* ==========================================================================
+   ADVANCED PHYSICS, ELECTRONICS & NATURE BACKGROUND CONTROLLER
+   4-layer system: aurora blobs + circuit/wave tile + floating orbs
+   ========================================================================== */
+
+/* ── Body base ───────────────────────────────────────────────────────────── */
 body {
     font-family: 'Inter', sans-serif;
     color: var(--text-main);
     line-height: 1.6;
     background-color: var(--bg-white);
     transition: background-color 0.3s ease, color 0.3s ease;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* ── Layer A (html::before) — Floating nature orb, top-left ─────────────── */
+html::before {
+    content: "";
+    position: fixed;
+    width: 680px;
+    height: 680px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(16,185,129,0.09) 0%, transparent 70%);
+    top: -180px;
+    left: -140px;
+    z-index: -3;
+    pointer-events: none;
+    animation: orbNature 22s ease-in-out infinite;
+    will-change: transform;
+}
+
+/* ── Layer B (html::after) — Floating electronics orb, bottom-right ──────── */
+html::after {
+    content: "";
+    position: fixed;
+    width: 580px;
+    height: 580px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(99,102,241,0.08) 0%, transparent 70%);
+    bottom: -140px;
+    right: -100px;
+    z-index: -3;
+    pointer-events: none;
+    animation: orbElectronics 28s ease-in-out infinite;
+    will-change: transform;
+}
+
+/* ── Layer C (body::before) — Circuit board + sine-wave SVG tile ─────────── */
+/*    Each 100×100 cell contains: grid traces with node gap, center junction  */
+/*    node, sine-wave physics trace, PCB L-traces, corner nodes, resistor     */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0.13;
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100'><line x1='50' y1='0' x2='50' y2='42' stroke='%232563eb' stroke-width='0.5' stroke-opacity='0.3'/><line x1='50' y1='58' x2='50' y2='100' stroke='%232563eb' stroke-width='0.5' stroke-opacity='0.3'/><line x1='0' y1='50' x2='42' y2='50' stroke='%232563eb' stroke-width='0.5' stroke-opacity='0.3'/><line x1='58' y1='50' x2='100' y2='50' stroke='%232563eb' stroke-width='0.5' stroke-opacity='0.3'/><circle cx='50' cy='50' r='3' fill='none' stroke='%232563eb' stroke-width='0.8' stroke-opacity='0.5'/><circle cx='50' cy='50' r='1.2' fill='%2310b981' fill-opacity='0.7'/><path d='M0 25 C10 18,20 18,30 25 C40 32,50 32,60 25 C70 18,80 18,90 25' fill='none' stroke='%2310b981' stroke-width='0.4' stroke-opacity='0.2'/><path d='M0 80 L22 80 L22 100' fill='none' stroke='%2310b981' stroke-width='0.5' stroke-opacity='0.25'/><path d='M80 0 L80 22 L100 22' fill='none' stroke='%236366f1' stroke-width='0.5' stroke-opacity='0.2'/><circle cx='22' cy='80' r='1.5' fill='none' stroke='%2310b981' stroke-width='0.6' stroke-opacity='0.35'/><circle cx='80' cy='22' r='1.5' fill='none' stroke='%236366f1' stroke-width='0.6' stroke-opacity='0.35'/><rect x='62' y='47' width='10' height='6' rx='1' fill='none' stroke='%232563eb' stroke-width='0.5' stroke-opacity='0.25'/></svg>");
+    background-size: 100px 100px;
+    animation: circuitDrift 90s linear infinite;
+}
+
+/* ── Layer D (body::after) — Aurora: nature + physics + electronics blobs ── */
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background-image:
+        /* 🌿 Nature — emerald forest bloom */
+        radial-gradient(ellipse 70% 60% at 14% 18%, rgba(16,185,129,0.09) 0%, transparent 65%),
+        /* 🔬 Physics — quantum blue plasma */
+        radial-gradient(ellipse 60% 70% at 84% 14%, rgba(37,99,235,0.10) 0%, transparent 60%),
+        /* ⚡ Electronics — indigo energy field */
+        radial-gradient(ellipse 80% 50% at 54% 84%, rgba(99,102,241,0.07) 0%, transparent 55%),
+        /* 🌊 Nature — warm teal current */
+        radial-gradient(ellipse 50% 60% at 79% 74%, rgba(20,184,166,0.06) 0%, transparent 50%),
+        /* 🌤 Physics — sky-blue atmospheric */
+        radial-gradient(ellipse 65% 45% at 28% 58%, rgba(14,165,233,0.05) 0%, transparent 55%);
+    background-size: 280% 280%;
+    animation: auroraDrift 40s ease-in-out infinite;
+}
+
+/* ── Dark mode intensification ───────────────────────────────────────────── */
+[data-theme="dark"] html::before {
+    background: radial-gradient(circle, rgba(16,185,129,0.14) 0%, transparent 70%);
+}
+
+[data-theme="dark"] html::after {
+    background: radial-gradient(circle, rgba(99,102,241,0.13) 0%, transparent 70%);
+}
+
+[data-theme="dark"] body::before {
+    opacity: 0.22;
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100'><line x1='50' y1='0' x2='50' y2='42' stroke='%2338bdf8' stroke-width='0.5' stroke-opacity='0.35'/><line x1='50' y1='58' x2='50' y2='100' stroke='%2338bdf8' stroke-width='0.5' stroke-opacity='0.35'/><line x1='0' y1='50' x2='42' y2='50' stroke='%2338bdf8' stroke-width='0.5' stroke-opacity='0.35'/><line x1='58' y1='50' x2='100' y2='50' stroke='%2338bdf8' stroke-width='0.5' stroke-opacity='0.35'/><circle cx='50' cy='50' r='3' fill='none' stroke='%2338bdf8' stroke-width='0.8' stroke-opacity='0.55'/><circle cx='50' cy='50' r='1.2' fill='%2334d399' fill-opacity='0.75'/><path d='M0 25 C10 18,20 18,30 25 C40 32,50 32,60 25 C70 18,80 18,90 25' fill='none' stroke='%2334d399' stroke-width='0.4' stroke-opacity='0.25'/><path d='M0 80 L22 80 L22 100' fill='none' stroke='%2334d399' stroke-width='0.5' stroke-opacity='0.3'/><path d='M80 0 L80 22 L100 22' fill='none' stroke='%23a78bfa' stroke-width='0.5' stroke-opacity='0.25'/><circle cx='22' cy='80' r='1.5' fill='none' stroke='%2334d399' stroke-width='0.6' stroke-opacity='0.4'/><circle cx='80' cy='22' r='1.5' fill='none' stroke='%23a78bfa' stroke-width='0.6' stroke-opacity='0.4'/><rect x='62' y='47' width='10' height='6' rx='1' fill='none' stroke='%2338bdf8' stroke-width='0.5' stroke-opacity='0.3'/></svg>");
+}
+
+[data-theme="dark"] body::after {
+    background-image:
+        radial-gradient(ellipse 70% 60% at 14% 18%, rgba(16,185,129,0.14) 0%, transparent 65%),
+        radial-gradient(ellipse 60% 70% at 84% 14%, rgba(37,99,235,0.17) 0%, transparent 60%),
+        radial-gradient(ellipse 80% 50% at 54% 84%, rgba(99,102,241,0.12) 0%, transparent 55%),
+        radial-gradient(ellipse 50% 60% at 79% 74%, rgba(20,184,166,0.10) 0%, transparent 50%),
+        radial-gradient(ellipse 65% 45% at 28% 58%, rgba(14,165,233,0.09) 0%, transparent 55%);
+}
+
+/* ── Keyframe animations ──────────────────────────────────────────────────── */
+
+/* Aurora: 5-point organic drift across the oversized background */
+@keyframes auroraDrift {
+    0%   { background-position: 0%   0%;  }
+    20%  { background-position: 80%  20%; }
+    40%  { background-position: 60%  90%; }
+    60%  { background-position: 20%  70%; }
+    80%  { background-position: 90%  40%; }
+    100% { background-position: 0%   0%;  }
+}
+
+/* Circuit tile: slow diagonal scroll for a living-lattice feel */
+@keyframes circuitDrift {
+    0%   { background-position: 0px 0px;     }
+    100% { background-position: 100px 100px; }
+}
+
+/* Nature orb: lazy float with subtle breath */
+@keyframes orbNature {
+    0%,  100% { transform: translate(0px,   0px)  scale(1);    }
+    30%        { transform: translate(65px,  80px) scale(1.08); }
+    60%        { transform: translate(30px, -45px) scale(0.95); }
+    80%        { transform: translate(-20px, 55px) scale(1.04); }
+}
+
+/* Electronics orb: slower counter-drift */
+@keyframes orbElectronics {
+    0%,  100% { transform: translate(0px,    0px)  scale(1);    }
+    25%        { transform: translate(-70px, -50px) scale(1.06); }
+    55%        { transform: translate(-30px,  65px) scale(0.97); }
+    75%        { transform: translate( 55px, -30px) scale(1.03); }
+}
+
+/* ── Accessibility: honour reduced-motion preference ─────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+    html::before, html::after,
+    body::before, body::after {
+        animation: none !important;
+    }
 }
 
 .container {
@@ -64,14 +204,16 @@ body {
 }
 
 .text-center { text-align: center; }
-.bg-light { background-color: var(--bg-light); }
+
+/* 🛠️ ULTRA FIX: Stripped solid blocks out of background properties completely */
+.bg-light { background-color: transparent !important; }
 
 
 /* ==========================================================================
    2. CLEAN FLOATING NAVIGATION
    ========================================================================== */
 .navbar {
-    position: absolute;   /* Flows smoothly with standard layout viewports */
+    position: absolute;   
     top: 0;
     left: 0;
     width: 100%;
@@ -133,7 +275,6 @@ body {
     background-color: rgba(255, 255, 255, 0.3);
 }
 
-/* Light / Dark State Toggling mechanics */
 [data-theme="dark"] .sun-icon { display: block; }
 [data-theme="dark"] .moon-icon { display: none; }
 .sun-icon { display: none; }
@@ -141,17 +282,16 @@ body {
 
 
 /* ==========================================================================
-   3. CINEMATIC BACKGROUND SLIDER (EMPTY TEXT BOXES REMOVED)
+   3. CINEMATIC BACKGROUND SLIDER
    ========================================================================== */
 .hero {
     position: relative;
     width: 100%;
-    height: 55vh; /* Reduced from 95vh so the background is a beautiful, sleek banner image */
+    height: 55vh; 
     overflow: hidden;
     background-color: #0f172a;
 }
 
-/* Pseudo-layer handling background rendering variables */
 .hero::before {
     content: "";
     position: absolute;
@@ -168,7 +308,6 @@ body {
     animation: slideBg6 18s infinite ease-in-out;
 }
 
-/* 6-Image Crisp Position Frame Loop */
 @keyframes slideBg6 {
     0%, 13.6% { background-image: url('hero-bg.jpg'); background-position: center center; }
     15.6% { background-position: 20% center; }
@@ -184,7 +323,6 @@ body {
     100% { background-position: 20% center; }
 }
 
-/* Premium image gradient tint overlay */
 .hero-overlay {
     position: absolute;
     top: 0;
@@ -197,22 +335,21 @@ body {
 
 
 /* ==========================================================================
-   4. NEW TRANSITIONAL PROFILE GREETING CARD (FLOATS ABOVE ABOUT ME)
+   4. PROFILE GREETING CARD (POSITIONED LEFT & DOWN)
    ========================================================================== */
 .hero-content.profile-intro-card {
     position: relative;
     z-index: 10;
     width: 100%;
     max-width: 750px;
-    /* -80px top margin pulls the card up so it perfectly straddles the edge of the hero image section */
-    margin: -90px auto 70px auto; 
-    background-color: var(--card-bg); 
+    margin: -40px auto 70px 2%; 
+    background-color: var(--card-bg) !important; 
     padding: 45px;
     border-radius: 20px;
-    backdrop-filter: blur(12px); 
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid var(--border-color);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+    backdrop-filter: blur(12px) !important; 
+    -webkit-backdrop-filter: blur(12px) !important;
+    border: 1px solid var(--border-color) !important;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.06) !important;
     text-align: left;
     transition: var(--transition);
 }
@@ -225,26 +362,11 @@ body {
     margin-bottom: 18px;
 }
 
-.hero-content.profile-intro-card {
-    position: relative;
-    z-index: 10;
-    width: 100%;
-    max-width: 750px;
-    
-    /* ADJUST THESE TWO VALUES BELOW:
-       - Change -60px to -40px or -30px to push it further DOWN.
-       - Change 5% to 2% or 0% to pull it further to the LEFT. */
-    margin: -40px auto 70px 2%; 
-    
-    background-color: var(--card-bg); 
-    padding: 45px;
-    border-radius: 20px;
-    backdrop-filter: blur(12px); 
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid var(--border-color);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
-    text-align: left;
-    transition: var(--transition);
+.hero-content.profile-intro-card p {
+    font-size: 1.15rem;
+    color: var(--card-text);
+    line-height: 1.6;
+    margin-bottom: 35px;
 }
 
 .hero-buttons {
@@ -295,10 +417,13 @@ body {
 
 
 /* ==========================================================================
-   6. MAIN WEBSITE SECTIONS (ABOUT, BLOGS, GRID LAYOUTS)
+   6. MAIN WEBSITE SECTIONS (SOLID COLORS REMOVED TO REVEAL CANVAS)
    ========================================================================== */
 .section {
-    padding: 60px 0 100px 0; /* Reduced top padding to adjust clean workflow near the cards */
+    padding: 60px 0 100px 0; 
+    /* 🛠️ ULTRA FIX: Forces all sections to be completely transparent so the moving background layer shines through */
+    background: transparent !important; 
+    background-color: transparent !important;
 }
 
 .section h2 {
@@ -307,14 +432,16 @@ body {
     margin-bottom: 35px;
     position: relative;
     display: inline-block;
+    margin-left: 5%; 
 }
 
-/* About Grid configuration specs */
 .about-grid {
     display: grid;
     grid-template-columns: 1.4fr 1fr;
     gap: 50px;
     align-items: start;
+    margin-left: 5%;
+    margin-right: 5%;
 }
 
 .about-text p {
@@ -329,11 +456,25 @@ body {
     gap: 20px;
 }
 
+/* Glassmorphic content layout container nodes */
+.card, .modern-form, .stat-card {
+    background-color: var(--card-bg) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    border: 1px solid var(--border-color) !important;
+    box-shadow: 0 12px 35px rgba(15, 23, 42, 0.04) !important;
+    transition: var(--transition);
+}
+
+[data-theme="dark"] .card, 
+[data-theme="dark"] .modern-form, 
+[data-theme="dark"] .stat-card {
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25) !important;
+}
+
 .stat-card {
-    background-color: var(--bg-light);
     padding: 24px;
     border-radius: 12px;
-    border: 1px solid var(--border-color);
 }
 
 .stat-card h3 {
@@ -342,7 +483,6 @@ body {
     font-size: 1.3rem;
 }
 
-/* Cards Grid Layout System */
 .card-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -351,16 +491,13 @@ body {
 }
 
 .card {
-    background-color: var(--bg-white);
     border-radius: 16px;
-    border: 1px solid var(--border-color);
     overflow: hidden;
-    transition: var(--transition);
 }
 
 .card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 12px 30px rgba(0,0,0,0.06);
+    box-shadow: 0 15px 40px rgba(37, 99, 235, 0.1) !important;
 }
 
 .card-body {
@@ -398,7 +535,7 @@ body {
 
 
 /* ==========================================================================
-   7. INTERACTIVE MODERN CONTACT FORMS
+   7. INTERACTIVE CONTACT FORMS
    ========================================================================== */
 .form-container { 
     max-width: 650px !important; 
@@ -406,11 +543,8 @@ body {
 }
 
 .modern-form {
-    background-color: var(--bg-white);
     padding: 40px;
     border-radius: 16px;
-    border: 1px solid var(--border-color);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.01);
 }
 
 .form-group {
@@ -460,7 +594,7 @@ body {
 
 
 /* ==========================================================================
-   8. FOOTER ENGINE & RESPONSIVE VIEWPORTS
+   8. FOOTER ENGINE & OFFICIAL BRAND SOCIAL LINKS HOVERS
    ========================================================================== */
 .footer {
     background-color: #0f172a;
@@ -469,28 +603,20 @@ body {
     padding: 40px 0;
     font-size: 0.9rem;
     border-top: 1px solid #1e293b;
+    z-index: 10;
+    position: relative;
 }
 
-@media (max-width: 768px) {
-    .hero { height: 45vh; }
-    .hero-content.profile-intro-card { margin: -50px auto 40px auto; padding: 30px; }
-    .hero-content.profile-intro-card h1 { font-size: 2.1rem; }
-    .about-grid { grid-template-columns: 1fr; gap: 30px; }
-    .nav-links { display: none; } /* Simplified display structure layout for smaller screens */
-}
-/* ==========================================================================
-   ADDITIONAL ISOLATED FOOTER SOCIAL LINKS STYLES
-   ========================================================================== */
 .footer .container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px; /* Separates the social icons from the copyright text below them */
+    gap: 20px; 
 }
 
 .footer-socials {
     display: flex;
-    gap: 20px; /* Clean spacing between each individual icon */
+    gap: 20px; 
     justify-content: center;
     margin-bottom: 5px;
 }
@@ -502,67 +628,56 @@ body {
     width: 42px;
     height: 42px;
     border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.08); /* Sleek, dark-mode friendly circle base */
-    color: #cbd5e1; /* Smooth silver icon color */
+    background-color: rgba(255, 255, 255, 0.08); 
+    color: #cbd5e1; 
     font-size: 1.2rem;
     text-decoration: none;
     transition: all 0.3s ease;
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Beautiful hover effects that make the buttons interactive */
 .social-icon:hover {
-    background-color: var(--primary-color); /* Turns your theme blue color on hover */
-    color: #ffffff;
-    transform: translateY(-4px); /* Clean floating bounce effect */
-    box-shadow: 0 5px 15px rgba(37, 99, 235, 0.4);
-}
-/* ==========================================================================
-   OFFICIAL BRAND COLORS HOVER ENGINE
-   ========================================================================== */
-
-/* Keeps the standard smooth float movement for all social buttons */
-.social-icon:hover {
-    color: #ffffff !important; /* Forces the inner icon to turn crisp white */
+    color: #ffffff !important; 
     transform: translateY(-4px); 
 }
 
-/* 1. YouTube Custom Hover Red */
-.social-icon:hover .fa-youtube {
-    transition: var(--transition);
-}
+.social-icon:hover .fa-youtube { transition: var(--transition); }
 .social-icon:has(.fa-youtube):hover {
-    background-color: #ff0000; /* Official YouTube Brand Red */
+    background-color: #ff0000; 
     border-color: #ff0000;
     box-shadow: 0 5px 15px rgba(255, 0, 0, 0.4);
 }
 
-/* 2. GitHub Custom Hover Dark Slate */
-.social-icon:hover .fa-github {
-    transition: var(--transition);
-}
+.social-icon:hover .fa-github { transition: var(--transition); }
 .social-icon:has(.fa-github):hover {
-    background-color: #24292e; /* Official GitHub Deep Black/Slate */
+    background-color: #24292e; 
     border-color: #24292e;
     box-shadow: 0 5px 15px rgba(36, 41, 46, 0.4);
 }
 
-/* 3. Facebook Custom Hover Blue */
-.social-icon:hover .fa-facebook-f {
-    transition: var(--transition);
-}
+.social-icon:hover .fa-facebook-f { transition: var(--transition); }
 .social-icon:has(.fa-facebook-f):hover {
-    background-color: #1877f2; /* Official Facebook Blue */
+    background-color: #1877f2; 
     border-color: #1877f2;
     box-shadow: 0 5px 15px rgba(24, 119, 242, 0.4);
 }
 
-/* 4. LinkedIn Custom Hover Corporate Blue */
-.social-icon:hover .fa-linkedin-in {
-    transition: var(--transition);
-}
+.social-icon:hover .fa-linkedin-in { transition: var(--transition); }
 .social-icon:has(.fa-linkedin-in):hover {
-    background-color: #0077b5; /* Official LinkedIn Blue */
+    background-color: #0077b5; 
     border-color: #0077b5;
     box-shadow: 0 5px 15px rgba(0, 119, 181, 0.4);
+}
+
+
+/* ==========================================================================
+   9. RESPONSIVE VIEWPORTS
+   ========================================================================== */
+@media (max-width: 768px) {
+    .hero { height: 45vh; }
+    .hero-content.profile-intro-card { margin: -50px auto 40px 5%; padding: 30px; width: 90%; }
+    .hero-content.profile-intro-card h1 { font-size: 2.1rem; }
+    .about-grid { grid-template-columns: 1fr; gap: 30px; margin-left: 5%; margin-right: 5%; }
+    .section h2 { margin-left: 5%; }
+    .nav-links { display: none; } 
 }
