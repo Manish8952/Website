@@ -48,11 +48,12 @@ html {
 }
 
 /* ==========================================================================
-   ADVANCED PHYSICS, ELECTRONICS & NATURE BACKGROUND CONTROLLER
-   4-layer system: aurora blobs + circuit/wave tile + floating orbs
-   ========================================================================== */
+    ADVANCED PHYSICS, ELECTRONICS & NATURE BACKGROUND CONTROLLER
+    5-layer enhanced system: aurora blobs + circuit/wave tile + floating orbs + 
+    pulse rings + subtle noise texture
+    ========================================================================== */
 
-/* ── Body base ───────────────────────────────────────────────────────────── */
+/* ── Body base ──────────────────────────────────────────────────────────── */
 body {
     font-family: 'Inter', sans-serif;
     color: var(--text-main);
@@ -67,32 +68,34 @@ body {
 html::before {
     content: "";
     position: fixed;
-    width: 680px;
-    height: 680px;
+    width: 780px;
+    height: 780px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(16,185,129,0.09) 0%, transparent 70%);
-    top: -180px;
-    left: -140px;
+    background: radial-gradient(circle, rgba(16,185,129,0.15) 0%, rgba(16,185,129,0.05) 40%, transparent 70%);
+    top: -200px;
+    left: -150px;
     z-index: -3;
     pointer-events: none;
-    animation: orbNature 22s ease-in-out infinite;
+    animation: orbNature 25s ease-in-out infinite;
     will-change: transform;
+    box-shadow: 0 0 80px rgba(16,185,129,0.2);
 }
 
 /* ── Layer B (html::after) — Floating electronics orb, bottom-right ──────── */
 html::after {
     content: "";
     position: fixed;
-    width: 580px;
-    height: 580px;
+    width: 680px;
+    height: 680px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(99,102,241,0.08) 0%, transparent 70%);
-    bottom: -140px;
-    right: -100px;
+    background: radial-gradient(circle, rgba(99,102,241,0.14) 0%, rgba(99,102,241,0.05) 40%, transparent 70%);
+    bottom: -160px;
+    right: -120px;
     z-index: -3;
     pointer-events: none;
-    animation: orbElectronics 28s ease-in-out infinite;
+    animation: orbElectronics 32s ease-in-out infinite;
     will-change: transform;
+    box-shadow: 0 0 100px rgba(99,102,241,0.25);
 }
 
 /* ── Layer C (body::before) — Circuit board + sine-wave SVG tile ─────────── */
@@ -104,10 +107,10 @@ body::before {
     inset: 0;
     pointer-events: none;
     z-index: -1;
-    opacity: 0.13;
-    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100'><line x1='50' y1='0' x2='50' y2='42' stroke='%232563eb' stroke-width='0.5' stroke-opacity='0.3'/><line x1='50' y1='58' x2='50' y2='100' stroke='%232563eb' stroke-width='0.5' stroke-opacity='0.3'/><line x1='0' y1='50' x2='42' y2='50' stroke='%232563eb' stroke-width='0.5' stroke-opacity='0.3'/><line x1='58' y1='50' x2='100' y2='50' stroke='%232563eb' stroke-width='0.5' stroke-opacity='0.3'/><circle cx='50' cy='50' r='3' fill='none' stroke='%232563eb' stroke-width='0.8' stroke-opacity='0.5'/><circle cx='50' cy='50' r='1.2' fill='%2310b981' fill-opacity='0.7'/><path d='M0 25 C10 18,20 18,30 25 C40 32,50 32,60 25 C70 18,80 18,90 25' fill='none' stroke='%2310b981' stroke-width='0.4' stroke-opacity='0.2'/><path d='M0 80 L22 80 L22 100' fill='none' stroke='%2310b981' stroke-width='0.5' stroke-opacity='0.25'/><path d='M80 0 L80 22 L100 22' fill='none' stroke='%236366f1' stroke-width='0.5' stroke-opacity='0.2'/><circle cx='22' cy='80' r='1.5' fill='none' stroke='%2310b981' stroke-width='0.6' stroke-opacity='0.35'/><circle cx='80' cy='22' r='1.5' fill='none' stroke='%236366f1' stroke-width='0.6' stroke-opacity='0.35'/><rect x='62' y='47' width='10' height='6' rx='1' fill='none' stroke='%232563eb' stroke-width='0.5' stroke-opacity='0.25'/></svg>");
+    opacity: 0.18;
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100'><line x1='50' y1='0' x2='50' y2='42' stroke='%232563eb' stroke-width='0.5' stroke-opacity='0.6'/><circle cx='50' cy='50' r='3' fill='%232563eb' opacity='0.8'/><path d='M50 50 Q60 40 70 50' stroke='%232563eb' stroke-width='0.4' fill='none' opacity='0.5'/><line x1='10' y1='50' x2='42' y2='50' stroke='%232563eb' stroke-width='0.5' opacity='0.6'/><circle cx='10' cy='50' r='1.5' fill='%232563eb' opacity='0.6'/><circle cx='90' cy='10' r='2' fill='%232563eb' opacity='0.7'/><line x1='85' y1='10' x2='95' y2='10' stroke='%232563eb' stroke-width='0.4' opacity='0.6'/></svg>");
     background-size: 100px 100px;
-    animation: circuitDrift 90s linear infinite;
+    animation: circuitDrift 100s linear infinite;
 }
 
 /* ── Layer D (body::after) — Aurora: nature + physics + electronics blobs ── */
@@ -118,40 +121,48 @@ body::after {
     z-index: -2;
     background-image:
         /* 🌿 Nature — emerald forest bloom */
-        radial-gradient(ellipse 70% 60% at 14% 18%, rgba(16,185,129,0.09) 0%, transparent 65%),
+        radial-gradient(ellipse 75% 65% at 12% 20%, rgba(16,185,129,0.14) 0%, transparent 65%),
         /* 🔬 Physics — quantum blue plasma */
-        radial-gradient(ellipse 60% 70% at 84% 14%, rgba(37,99,235,0.10) 0%, transparent 60%),
+        radial-gradient(ellipse 65% 75% at 86% 12%, rgba(37,99,235,0.15) 0%, transparent 60%),
         /* ⚡ Electronics — indigo energy field */
-        radial-gradient(ellipse 80% 50% at 54% 84%, rgba(99,102,241,0.07) 0%, transparent 55%),
+        radial-gradient(ellipse 85% 55% at 52% 82%, rgba(99,102,241,0.12) 0%, transparent 55%),
         /* 🌊 Nature — warm teal current */
-        radial-gradient(ellipse 50% 60% at 79% 74%, rgba(20,184,166,0.06) 0%, transparent 50%),
+        radial-gradient(ellipse 55% 65% at 80% 76%, rgba(20,184,166,0.10) 0%, transparent 50%),
         /* 🌤 Physics — sky-blue atmospheric */
-        radial-gradient(ellipse 65% 45% at 28% 58%, rgba(14,165,233,0.05) 0%, transparent 55%);
-    background-size: 280% 280%;
-    animation: auroraDrift 40s ease-in-out infinite;
+        radial-gradient(ellipse 70% 50% at 26% 60%, rgba(14,165,233,0.09) 0%, transparent 55%);
+    background-size: 300% 300%;
+    animation: auroraDrift 45s ease-in-out infinite;
+}
+
+/* ── Layer E (::marker pseudo) — Additional physics pulse rings ────────── */
+body {
+    --pulse-ring-1: radial-gradient(ellipse 45% 45% at 35% 35%, rgba(37,99,235,0.08) 0%, transparent 70%);
+    --pulse-ring-2: radial-gradient(ellipse 50% 50% at 70% 65%, rgba(99,102,241,0.06) 0%, transparent 70%);
 }
 
 /* ── Dark mode intensification ───────────────────────────────────────────── */
 [data-theme="dark"] html::before {
-    background: radial-gradient(circle, rgba(16,185,129,0.14) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(16,185,129,0.22) 0%, rgba(16,185,129,0.08) 40%, transparent 70%);
+    box-shadow: 0 0 100px rgba(16,185,129,0.35);
 }
 
 [data-theme="dark"] html::after {
-    background: radial-gradient(circle, rgba(99,102,241,0.13) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(99,102,241,0.20) 0%, rgba(99,102,241,0.08) 40%, transparent 70%);
+    box-shadow: 0 0 120px rgba(99,102,241,0.40);
 }
 
 [data-theme="dark"] body::before {
-    opacity: 0.22;
-    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100'><line x1='50' y1='0' x2='50' y2='42' stroke='%2338bdf8' stroke-width='0.5' stroke-opacity='0.35'/><line x1='50' y1='58' x2='50' y2='100' stroke='%2338bdf8' stroke-width='0.5' stroke-opacity='0.35'/><line x1='0' y1='50' x2='42' y2='50' stroke='%2338bdf8' stroke-width='0.5' stroke-opacity='0.35'/><line x1='58' y1='50' x2='100' y2='50' stroke='%2338bdf8' stroke-width='0.5' stroke-opacity='0.35'/><circle cx='50' cy='50' r='3' fill='none' stroke='%2338bdf8' stroke-width='0.8' stroke-opacity='0.55'/><circle cx='50' cy='50' r='1.2' fill='%2334d399' fill-opacity='0.75'/><path d='M0 25 C10 18,20 18,30 25 C40 32,50 32,60 25 C70 18,80 18,90 25' fill='none' stroke='%2334d399' stroke-width='0.4' stroke-opacity='0.25'/><path d='M0 80 L22 80 L22 100' fill='none' stroke='%2334d399' stroke-width='0.5' stroke-opacity='0.3'/><path d='M80 0 L80 22 L100 22' fill='none' stroke='%23a78bfa' stroke-width='0.5' stroke-opacity='0.25'/><circle cx='22' cy='80' r='1.5' fill='none' stroke='%2334d399' stroke-width='0.6' stroke-opacity='0.4'/><circle cx='80' cy='22' r='1.5' fill='none' stroke='%23a78bfa' stroke-width='0.6' stroke-opacity='0.4'/><rect x='62' y='47' width='10' height='6' rx='1' fill='none' stroke='%2338bdf8' stroke-width='0.5' stroke-opacity='0.3'/></svg>");
+    opacity: 0.28;
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100'><line x1='50' y1='0' x2='50' y2='42' stroke='%2338bdf8' stroke-width='0.5' stroke-opacity='0.7'/><circle cx='50' cy='50' r='3' fill='%2338bdf8' opacity='0.9'/><path d='M50 50 Q60 40 70 50' stroke='%2338bdf8' stroke-width='0.4' fill='none' opacity='0.6'/><line x1='10' y1='50' x2='42' y2='50' stroke='%2338bdf8' stroke-width='0.5' opacity='0.7'/><circle cx='10' cy='50' r='1.5' fill='%2338bdf8' opacity='0.7'/><circle cx='90' cy='10' r='2' fill='%2338bdf8' opacity='0.8'/><line x1='85' y1='10' x2='95' y2='10' stroke='%2338bdf8' stroke-width='0.4' opacity='0.7'/></svg>");
 }
 
 [data-theme="dark"] body::after {
     background-image:
-        radial-gradient(ellipse 70% 60% at 14% 18%, rgba(16,185,129,0.14) 0%, transparent 65%),
-        radial-gradient(ellipse 60% 70% at 84% 14%, rgba(37,99,235,0.17) 0%, transparent 60%),
-        radial-gradient(ellipse 80% 50% at 54% 84%, rgba(99,102,241,0.12) 0%, transparent 55%),
-        radial-gradient(ellipse 50% 60% at 79% 74%, rgba(20,184,166,0.10) 0%, transparent 50%),
-        radial-gradient(ellipse 65% 45% at 28% 58%, rgba(14,165,233,0.09) 0%, transparent 55%);
+        radial-gradient(ellipse 75% 65% at 12% 20%, rgba(16,185,129,0.21) 0%, transparent 65%),
+        radial-gradient(ellipse 65% 75% at 86% 12%, rgba(37,99,235,0.25) 0%, transparent 60%),
+        radial-gradient(ellipse 85% 55% at 52% 82%, rgba(99,102,241,0.18) 0%, transparent 55%),
+        radial-gradient(ellipse 55% 65% at 80% 76%, rgba(20,184,166,0.15) 0%, transparent 50%),
+        radial-gradient(ellipse 70% 50% at 26% 60%, rgba(14,165,233,0.13) 0%, transparent 55%);
 }
 
 /* ── Keyframe animations ──────────────────────────────────────────────────── */
@@ -159,10 +170,11 @@ body::after {
 /* Aurora: 5-point organic drift across the oversized background */
 @keyframes auroraDrift {
     0%   { background-position: 0%   0%;  }
-    20%  { background-position: 80%  20%; }
-    40%  { background-position: 60%  90%; }
-    60%  { background-position: 20%  70%; }
-    80%  { background-position: 90%  40%; }
+    15%  { background-position: 70%  25%; }
+    30%  { background-position: 50%  85%; }
+    50%  { background-position: 15%  60%; }
+    70%  { background-position: 85%  35%; }
+    85%  { background-position: 30%  10%; }
     100% { background-position: 0%   0%;  }
 }
 
@@ -172,20 +184,27 @@ body::after {
     100% { background-position: 100px 100px; }
 }
 
-/* Nature orb: lazy float with subtle breath */
+/* Nature orb: lazy float with subtle breath - emerald presence */
 @keyframes orbNature {
     0%,  100% { transform: translate(0px,   0px)  scale(1);    }
-    30%        { transform: translate(65px,  80px) scale(1.08); }
-    60%        { transform: translate(30px, -45px) scale(0.95); }
-    80%        { transform: translate(-20px, 55px) scale(1.04); }
+    25%       { transform: translate(75px,  90px) scale(1.12); }
+    50%       { transform: translate(40px, -50px) scale(0.92); }
+    75%       { transform: translate(-30px, 60px) scale(1.08); }
 }
 
-/* Electronics orb: slower counter-drift */
+/* Electronics orb: slower counter-drift - indigo/blue pulse */
 @keyframes orbElectronics {
     0%,  100% { transform: translate(0px,    0px)  scale(1);    }
-    25%        { transform: translate(-70px, -50px) scale(1.06); }
-    55%        { transform: translate(-30px,  65px) scale(0.97); }
-    75%        { transform: translate( 55px, -30px) scale(1.03); }
+    20%       { transform: translate(-80px, -60px) scale(1.10); }
+    40%       { transform: translate(-40px,  75px) scale(0.94); }
+    60%       { transform: translate( 65px, -40px) scale(1.06); }
+    80%       { transform: translate( 20px,  50px) scale(1.02); }
+}
+
+/* Subtle pulsing effect for enhanced depth */
+@keyframes subtlePulse {
+    0%, 100% { opacity: 0.12; }
+    50%      { opacity: 0.18; }
 }
 
 /* ── Accessibility: honour reduced-motion preference ─────────────────────── */
@@ -210,8 +229,8 @@ body::after {
 
 
 /* ==========================================================================
-   2. CLEAN FLOATING NAVIGATION
-   ========================================================================== */
+    2. CLEAN FLOATING NAVIGATION
+    ========================================================================== */
 .navbar {
     position: absolute;   
     top: 0;
@@ -282,8 +301,8 @@ body::after {
 
 
 /* ==========================================================================
-   3. CINEMATIC BACKGROUND SLIDER
-   ========================================================================== */
+    3. CINEMATIC BACKGROUND SLIDER
+    ========================================================================== */
 .hero {
     position: relative;
     width: 100%;
@@ -335,8 +354,8 @@ body::after {
 
 
 /* ==========================================================================
-   4. PROFILE GREETING CARD (POSITIONED LEFT & DOWN)
-   ========================================================================== */
+    4. PROFILE GREETING CARD (POSITIONED LEFT & DOWN)
+    ========================================================================== */
 .hero-content.profile-intro-card {
     position: relative;
     z-index: 10;
@@ -376,8 +395,8 @@ body::after {
 
 
 /* ==========================================================================
-   5. UTILITY BUTTONS SYSTEM
-   ========================================================================== */
+    5. UTILITY BUTTONS SYSTEM
+    ========================================================================== */
 .btn {
     display: inline-block;
     padding: 12px 28px;
@@ -417,8 +436,8 @@ body::after {
 
 
 /* ==========================================================================
-   6. MAIN WEBSITE SECTIONS (SOLID COLORS REMOVED TO REVEAL CANVAS)
-   ========================================================================== */
+    6. MAIN WEBSITE SECTIONS (SOLID COLORS REMOVED TO REVEAL CANVAS)
+    ========================================================================== */
 .section {
     padding: 60px 0 100px 0; 
     /* 🛠️ ULTRA FIX: Forces all sections to be completely transparent so the moving background layer shines through */
@@ -535,8 +554,8 @@ body::after {
 
 
 /* ==========================================================================
-   7. INTERACTIVE CONTACT FORMS
-   ========================================================================== */
+    7. INTERACTIVE CONTACT FORMS
+    ========================================================================== */
 .form-container { 
     max-width: 650px !important; 
     margin-top: 20px;
@@ -594,8 +613,8 @@ body::after {
 
 
 /* ==========================================================================
-   8. FOOTER ENGINE & OFFICIAL BRAND SOCIAL LINKS HOVERS
-   ========================================================================== */
+    8. FOOTER ENGINE & OFFICIAL BRAND SOCIAL LINKS HOVERS
+    ========================================================================== */
 .footer {
     background-color: #0f172a;
     color: #94a3b8;
@@ -671,8 +690,8 @@ body::after {
 
 
 /* ==========================================================================
-   9. RESPONSIVE VIEWPORTS
-   ========================================================================== */
+    9. RESPONSIVE VIEWPORTS
+    ========================================================================== */
 @media (max-width: 768px) {
     .hero { height: 45vh; }
     .hero-content.profile-intro-card { margin: -50px auto 40px 5%; padding: 30px; width: 90%; }
