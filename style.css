@@ -119,7 +119,7 @@ body::after {
     content: "";
     position: fixed;
     inset: 0;
-    z-index: -2;
+    z-index: -3;
     background-image:
         /* 🌿 Nature — vibrant emerald forest bloom */
         radial-gradient(ellipse 80% 70% at 10% 22%, rgba(16,185,129,0.20) 0%, rgba(34,197,94,0.10) 40%, transparent 70%),
