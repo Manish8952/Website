@@ -79,7 +79,6 @@ html::before {
     animation: orbNature 28s ease-in-out infinite;
     will-change: transform;
     box-shadow: 0 0 120px rgba(16,185,129,0.35), 0 0 220px rgba(34,197,94,0.15);
-    filter: blur(1px);
 }
 
 /* ── Layer B (html::after) — Floating electronics orb, bottom-right (ENHANCED) */
@@ -97,7 +96,6 @@ html::after {
     animation: orbElectronics 35s ease-in-out infinite;
     will-change: transform;
     box-shadow: 0 0 140px rgba(99,102,241,0.4), 0 0 280px rgba(37,99,235,0.2);
-    filter: blur(2px);
 }
 
 /* ── Layer C (body::before) — Enhanced circuit board + sine-wave SVG tile ─── */
@@ -108,7 +106,7 @@ body::before {
     inset: 0;
     pointer-events: none;
     z-index: -1;
-    opacity: 0.22;
+    opacity: 0.15;
     background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><defs><filter id='glow'><feGaussianBlur stdDeviation='0.5' result='coloredBlur'/><fe[...]
     background-size: 120px 120px;
     animation: circuitDrift 120s linear infinite;
@@ -155,7 +153,7 @@ body {
 }
 
 [data-theme="dark"] body::before {
-    opacity: 0.32;
+    opacity: 0.18;
     background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><defs><filter id='glow'><feGaussianBlur stdDeviation='0.5' result='coloredBlur'/><fe[...]
 }
 
@@ -243,8 +241,8 @@ body {
     left: 0;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.15);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     z-index: 9999;
 }
@@ -299,7 +297,7 @@ body {
     align-items: center;
     justify-content: center;
     transition: var(--transition);
-    backdrop-filter: blur(5px);
+    backdrop-filter: none;
 }
 
 .theme-btn:hover {
@@ -381,8 +379,8 @@ body {
     background-color: var(--card-bg) !important; 
     padding: 45px;
     border-radius: 20px;
-    backdrop-filter: blur(16px) !important; 
-    -webkit-backdrop-filter: blur(16px) !important;
+    backdrop-filter: none !important; 
+    -webkit-backdrop-filter: none !important;
     border: 1.5px solid var(--border-color) !important;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12), inset 0 1px 1px rgba(255, 255, 255, 0.3) !important;
     text-align: left;
@@ -441,7 +439,7 @@ body {
     background-color: rgba(255, 255, 255, 0.5);
     color: var(--card-title);
     border: 1.5px solid var(--border-color);
-    backdrop-filter: blur(8px);
+    backdrop-filter: none;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
 }
 
@@ -500,8 +498,8 @@ body {
 /* Glassmorphic content layout container nodes (ENHANCED) */
 .card, .modern-form, .stat-card {
     background-color: var(--card-bg) !important;
-    backdrop-filter: blur(16px) !important;
-    -webkit-backdrop-filter: blur(16px) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
     border: 1.5px solid var(--border-color) !important;
     box-shadow: 0 15px 45px rgba(15, 23, 42, 0.08), inset 0 1px 1px rgba(255, 255, 255, 0.2) !important;
     transition: var(--transition);
