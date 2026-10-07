@@ -1,157 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manish Majhi </title>
-    <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manish Majhi</title>
-
+    <meta name="description" content="Educational content, technical research and blogs on physics, electronics, AI and technology by Manish Kumar Majhi.">
     <link rel="icon" type="image/png" href="favicon.png">
 
-    <link rel="stylesheet" href="style.css">
-</head>
-    <link rel="stylesheet" href="style.css">
+    <!-- Apply saved theme before first paint (prevents a flash) -->
+    <script>
+        (function () {
+            var t = localStorage.getItem('theme');
+            if (t) document.documentElement.setAttribute('data-theme', t);
+        })();
+    </script>
+
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-   
-    <nav class="navbar">
+    <canvas id="bg-canvas" aria-hidden="true"></canvas>
+
+    <header class="navbar">
         <div class="container">
-            <a href="#" class="logo">MKM<span>.</span></a>
-            <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#blog">Blog</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li>
-                    <button id="theme-toggle" class="theme-btn" aria-label="Toggle theme">
-                        <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.22" x2="5.64" y2="17.78"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-                        <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-                    </button>
-                </li>
-            </ul>
+            <a href="#top" class="logo">MKM<span>.</span></a>
+            <nav aria-label="Main">
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li>
+                        <button id="theme-toggle" class="theme-btn" aria-label="Toggle theme">
+                            <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                            <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
         </div>
-    </nav>
-    <header class="hero">
-        <div class="hero-overlay"></div>
     </header>
 
-    <section id="about" class="section">
-        <div class="container">
-            
-            <div class="hero-content profile-intro-card">
-                <h1>Hi, I'm <span class="highlight">Manish Majhi</span></h1>
-                <p>Welcome to my digital space. I share educational content, insights into technical research, and personal blogs about science and technology.</p>
-                <div class="hero-buttons">
-                    <a href="#blog" class="btn btn-primary">Read My Blog</a>
-                    <a href="#contact" class="btn btn-secondary">Get In Touch</a>
-                </div>
+    <main id="top">
+        <!-- Image slider: sits below the navbar, nothing overlaps it -->
+        <div class="hero" aria-label="Featured images">
+                <img class="slide" style="--i:0" src="hero-bg.jpg"  alt="MKM: advancing knowledge in physics, AI and tech">
+                <img class="slide" style="--i:1" src="hero-bg2.jpg" alt="Soldering a circuit board in an electronics lab" loading="lazy">
+                <img class="slide" style="--i:2" src="hero-bg3.jpg" alt="Educational content on physics, technology and electronics" loading="lazy">
+                <img class="slide" style="--i:3" src="hero-bg4.jpg" alt="Microelectronics powering global digital infrastructure" loading="lazy">
+                <img class="slide" style="--i:4" src="hero-bg5.jpg" alt="Microelectronics in today's computing" loading="lazy">
+                <img class="slide" style="--i:5" src="hero-bg6.jpg" alt="Scaling digital infrastructure with cloud computing" loading="lazy">
             </div>
- <section id="about" class="section">
-        <div class="container">
-            <h2>About Me</h2>
-            <div class="about-grid">
-                <div class="about-text">
-                    <p>I am an independent learner passionate about exploring the frontiers of science, physics, and emerging technologies. This platform serves as my digital portfolio, CV, and a space to document my academic journey.</p>
-                </div>
-                <div class="about-stats">
-                    <div class="stat-card">
-                        <h3>Focus</h3>
-                        <p>Education & Research</p>
-                    </div>
-                    <div class="stat-card">
-                        <h3>Interests</h3>
-                        <p>Physics, Electronics, Tech, AI & Coding</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <section id="blog" class="section bg-light">
-        <div class="container">
-            <h2>Educational Content & Blogs</h2>
-            <div class="card-grid">
-                <article class="card">
-                    <div class="card-body">
+        <!-- Greeting + about, all in one card -->
+        <section id="about" class="section intro">
+            <div class="container">
+                <div class="intro-card">
+                    <h1>Hi, I'm <span class="highlight">Manish Majhi</span></h1>
+                    <p>Welcome to my digital space. I share educational content, insights into technical research, and personal blogs about science and technology.</p>
+                    <p>I am an independent learner passionate about exploring the frontiers of science, physics, and emerging technologies. This platform serves as my digital portfolio, CV, and a space to document my academic journey and research insights.</p>
+                    <dl class="facts">
+                        <div><dt>Focus</dt><dd>Education &amp; Research</dd></div>
+                        <div><dt>Interests</dt><dd>Physics, Electronics, Tech, AI &amp; Coding</dd></div>
+                    </dl>
+                    <div class="hero-buttons">
+                        <a href="#blog" class="btn btn-primary">Read My Blog</a>
+                        <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="blog" class="section">
+            <div class="container">
+                <h2 class="section-title">Educational Content &amp; Blogs</h2>
+                <div class="card-grid">
+                    <article class="glass card">
                         <span class="tag">Physics</span>
                         <h3>Understanding Modern Physics Concepts</h3>
                         <p>Diving deep into foundational theories, formulas, and real-world technical applications.</p>
-                        <a href="#" class="read-more">Read Article →</a>
-                    </div>
-                </article>
-                <article class="card">
-                    <div class="card-body">
+                        <a href="#" class="read-more">Read article →</a>
+                    </article>
+                    <article class="glass card">
                         <span class="tag">Technology</span>
                         <h3>The Future of Cloud Computing</h3>
                         <p>Exploring how distributed systems and intelligent networks are scaling digital infrastructure globally.</p>
-                        <a href="#" class="read-more">Read Article →</a>
+                        <a href="#" class="read-more">Read article →</a>
+                    </article>
+                    <article class="glass card">
+                        <span class="tag">Electronics</span>
+                        <h3>How Electronics Is Essential in Today's Computing</h3>
+                        <p>How microelectronics powers fast modern computing, and why it opens great opportunities for future research.</p>
+                        <a href="#" class="read-more">Read article →</a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section">
+            <div class="container form-container">
+                <h2 class="section-title">Let's Connect</h2>
+                <p class="section-sub">Have a question about my research, or want to collaborate on a project? Drop a message!</p>
+
+                <form id="contact-form" class="modern-form">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required placeholder="Your Name*">
                     </div>
-                </article>
-                <article class="card">
-                <div class="card-body">
-                <span class="tag">Electronics</span>
-                <h3>How Electronics is Essential in Todays Computing</h3>
-                <p>Exploring How Microelectronics Essential for today's Fast Computing And How It's Great for Future Research Opportunities.</p>
-                <a href="#" class="read-more">Read Article →</a>
-                </div>
-                </article>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required placeholder="Your Email address*">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" name="message" rows="5" required placeholder="Type your message here..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary form-btn">Send Message</button>
+                    <div id="form-status" class="form-status" role="status" aria-live="polite"></div>
+                </form>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
-    <section id="contact" class="section">
-        <div class="container form-container">
-            <div class="text-center">
-                <h2>Let's Connect</h2>
-                <p>Have a question about my research, or want to collaborate on a project? Drop a message!</p>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-socials">
+                <a href="https://youtube.com" target="_blank" rel="noopener" aria-label="YouTube" class="social-icon yt"><i class="fab fa-youtube"></i></a>
+                <a href="https://github.com/Manish8952" target="_blank" rel="noopener" aria-label="GitHub" class="social-icon gh"><i class="fab fa-github"></i></a>
+                <a href="https://www.facebook.com/manish.majhi.rajdhoob" target="_blank" rel="noopener" aria-label="Facebook" class="social-icon fb"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.linkedin.com/in/manish-kumar-majhi" target="_blank" rel="noopener" aria-label="LinkedIn" class="social-icon li"><i class="fab fa-linkedin-in"></i></a>
             </div>
-            
-            <form id="contact-form" class="modern-form">
-                <div class="form-group">
-                    <label for="name">Full Name</label>
-                    <input type="text" id="name" required placeholder="Your Name*">
-                </div>
-                <div class="form-group">
-                    <label for="email">Email Adress</label>
-                    <input type="email" id="email" required placeholder="Your Email adress*">
-                </div>
-                <div class="form-group">
-                    <label for="message">Your Message</label>
-                    <textarea id="message" rows="5" required placeholder="Type your message here..."></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary form-btn">Send Message</button>
-                <div id="form-status" class="form-status"></div>
-            </form>
+            <p>&copy; 2026 Manish Kumar Majhi. All rights reserved.</p>
         </div>
-    </section>
+    </footer>
 
-        <footer class="footer">
-    <div class="container">
-        <div class="footer-socials">
-            <a href="https://youtube.com" target="_blank" aria-label="YouTube" class="social-icon">
-                <i class="fab fa-youtube"></i>
-            </a>
-            <a href="https://github.com/Manish8952" target="_blank" aria-label="GitHub" class="social-icon">
-                <i class="fab fa-github"></i>
-            </a>
-            <a href="https://www.facebook.com/manish.majhi.rajdhoob" target="_blank" aria-label="Facebook" class="social-icon">
-                <i class="fab fa-facebook-f"></i>
-            </a>
-            <a href="https://www.linkedin.com/in/manish-kumar-majhi" target="_blank" aria-label="LinkedIn" class="social-icon">
-                <i class="fab fa-linkedin-in"></i>
-            </a>
-        </div>
-        
-        <p>&copy; 2026 Manish Kumar Majhi. All Rights Reserved.</p>
-    </div>
-</footer>
-        <script src="script.js"></script>
-          <canvas id="bg-canvas"></canvas>
-        <script src="background.js" defer></script>
+    <script src="script.js"></script>
+    <script src="background.js" defer></script>
 </body>
 </html>
