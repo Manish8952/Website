@@ -22,15 +22,18 @@ window.ARTICLES = {
 
   physics: {
     tag: "Physics",
-    title: "Understanding Modern Physics Concepts",
+    title: "The Fascinating World of Physics",
     date: "2026-10-08",
     parts: [
       {
         id: "biography",
-        title: "Biography of Physicist",
-        date: "2026-10-08",
+        title: "Biography of Physicists",
+        date: "2026-10-09",
         blocks: [
-          { type: "text", text: "Write the first physics article here." }
+          { type: "heading", text: "Richard feynman and his contributions to physics" },
+          { type: "text", text: "Richard Phillips Feynman was an American theoretical physicist. He shared the 1965 Nobel Prize in Physics with Julian Schwinger and Shin'ichirō Tomonaga for their fundamental work in quantum electrodynamics, with deep-ploughing consequences for the physics of elementary particles" },
+          { type: "image", src: "articles/richard-photo.jpg", caption: "Richard Feynman" },
+          {type: "text", text: "Feynman was a keen popularizer of physics through both books and lectures, and he also became known through his semi-autobiographical books Surely You're Joking, Mr. Feynman! and What Do You Care What Other People Think? and the biography Genius: The Life and Science of Richard Feynman."}
         ]
       },
       {
