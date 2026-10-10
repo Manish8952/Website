@@ -6,7 +6,7 @@
    ===================================================================== */
 window.LATEST = {
 
-  lastUpdated: "2026-10-08",
+  lastUpdated: "2026-10-09", // date of the last update, shown in the top-right corner
 
   // Big highlighted message at the top. Use  announcement: null  to hide it.
   announcement: {
@@ -15,8 +15,8 @@ window.LATEST = {
 
   // What you are working on right now (progress is 0-100, optional)
   current: [
-    { title: "Building my personal website", text: "Adding a Latest page, contact map and blog articles.", progress: 80 },
-    { title: "Studying for my B.Sc. in Physics", text: "Self-directed learning in physics, electronics and AI.", progress: 40 }
+    { title: "Building my personal website", text: "which is almost done.", progress: 90 },
+    { title: "Studying for my B.Sc. in Physics", text: "Self-directed learning in physics, electronics and AI.", progress: 25 }
   ],
 
   // What is coming up next
@@ -40,7 +40,7 @@ window.LATEST = {
   // Daily updates. Every field except date + title is optional.
   updates: [
     {
-      date: "2026-10-08",
+      date: "2026-10-09",
       title: "Testing the Latest page",
       text: "Write what you did today here. You can add a photo, a link and a YouTube video to any update.",
       // image: "latest/my-photo.jpg",                       // upload the photo into the "latest" folder
