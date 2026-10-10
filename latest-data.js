@@ -21,8 +21,8 @@ window.LATEST = {
 
   // What is coming up next
   upcoming: [
-    { date: "Coming soon", title: "First blog article on modern physics", text: "A beginner-friendly guide with formulas and examples." },
-    { date: "Later this year", title: "Electronics project video", text: "A step-by-step build shared on YouTube." }
+    { date: "Coming soon", title: "First article on Electronics.", text: "I will be writing about the basics of electronics." },
+    { date: "Later this year", title: "Electronics project", text: "I will be making a drone." }
   ],
 
   // YouTube videos shown in a medium player just above "Let's Connect".
@@ -33,16 +33,16 @@ window.LATEST = {
     // when videos are not added, the entire "Videos" section is hidden automatically if you leave the list empty
     // { title: "My first physics video", youtube: "https://www.youtube.com/watch?v=VIDEO_ID" },
     // { title: "Electronics project",    youtube: "https://youtu.be/VIDEO_ID" },
-    { title: "Exploring Quantum Mechanics", youtube: "https://youtu.be/yRqRJLMR5fU?si=eqcxjlqBwUR4EX6d" },
-    { title: "Building a Simple Circuit", youtube: "https://youtu.be/yRqRJLMR5fU?si=eqcxjlqBwUR4EX6d" },
+    { title: "Electronics with Arduino", youtube: "https://youtu.be/yi29dbPnu28?si=Eyc_Y5PvBLOkxg_O" },
+    { title: "Why we use Ac in homes over DC", youtube: "https://youtu.be/S7C5sSde9e4?si=phXfFCROsZCknzIH" },
   ],
 
   // Daily updates. Every field except date + title is optional.
   updates: [
     {
       date: "2026-10-09",
-      title: "Testing the Latest page",
-      text: "Write what you did today here. You can add a photo, a link and a YouTube video to any update.",
+      title: "Learning about Arduino and electronics",
+      text: "Working on a simple Arduino project.",
       // image: "latest/my-photo.jpg",                       // upload the photo into the "latest" folder
       // link: { label: "Read more", url: "https://example.com" },
       // youtube: "https://www.youtube.com/watch?v=VIDEO_ID" // paste any YouTube link
