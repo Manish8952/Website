@@ -64,7 +64,19 @@
                     }
                     var d = el('a', 'drive-card'); d.href = safeUrl(b.url); external(d);
                     var ic = el('i', 'fab fa-google-drive'); d.append(ic, el('span', '', b.label || 'Open in Google Drive'), el('em', '', 'Open ↗'));
-                    n.append(d); break;
+                                       n.append(d); break;
+                                case 'pdf':
+                    n = el('div', 'a-pdf');
+                    var pdfSrc = safeUrl(b.src);
+                    if (b.embed !== false) {
+                        var pdfWrap = el('div', 'pdf-embed'), pdfFrame = document.createElement('iframe');
+                        pdfFrame.src = pdfSrc; pdfFrame.title = b.label || b.caption || 'PDF document'; pdfFrame.loading = 'lazy';
+                        pdfWrap.append(pdfFrame); n.append(pdfWrap);
+                    }
+                    if (b.caption) n.append(el('p', 'pdf-caption', b.caption));
+                    var pdfLink = el('a', 'drive-card'); pdfLink.href = pdfSrc; pdfLink.target = '_blank'; pdfLink.rel = 'noopener';
+                    pdfLink.append(el('i', 'fas fa-file-pdf'), el('span', '', b.label || 'Open PDF'), el('em', '', 'Open ↗'));
+                    n.append(pdfLink); break;
                 default: return;
             }
             body.append(n);
