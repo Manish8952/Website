@@ -14,55 +14,58 @@
    { type: "link",    label: "Read the paper", url: "https://example.com", note: "Optional" }
    { type: "drive",   label: "Lecture notes (PDF)", url: "https://drive.google.com/file/d/FILE_ID/view" }
    { type: "drive",   label: "Slides", url: "https://drive.google.com/file/d/FILE_ID/view", embed: true }
+   { type: "pdf",     label: "Research Paper", src: "articles/research-paper.pdf", embed: true }
+    { type: "pdf", label: "Download the full paper", src: "articles/feynman-notes.pdf", embed: false },for only pdf download only, no embed viewer.
 
    RULES: a comma after every part and every block, except the last one.
           Each part "id" must be short, with no spaces, and different from the others.
    ===================================================================== */
 window.ARTICLES = {
 
-  physics: {
-    tag: "Physics",
-    title: "The Fascinating World of Physics",
-    date: "2026-10-08",
+physics:{  // physic for my Article 
+    tag: "My Articles",
+    title: "My works",
+    date: "2026-10-12",
     parts: [
       {
         id: "biography",
         title: "Biography of Physicists",
-        date: "2026-10-09",
+        date: "2026-10-12",
         blocks: [
           { type: "heading", text: "Richard feynman and his contributions to physics" },
           { type: "text", text: "Richard Phillips Feynman was an American theoretical physicist. He shared the 1965 Nobel Prize in Physics with Julian Schwinger and Shin'ichirō Tomonaga for their fundamental work in quantum electrodynamics, with deep-ploughing consequences for the physics of elementary particles" },
           { type: "image", src: "articles/richard-photo.jpg", caption: "Richard Feynman" },
-          {type: "text", text: "Feynman was a keen popularizer of physics through both books and lectures, and he also became known through his semi-autobiographical books Surely You're Joking, Mr. Feynman! and What Do You Care What Other People Think? and the biography Genius: The Life and Science of Richard Feynman."}
+          {type: "text", text: "Feynman was a keen popularizer of physics through both books and lectures, and he also became known through his semi-autobiographical books Surely You're Joking, Mr. Feynman! and What Do You Care What Other People Think? and the biography Genius: The Life and Science of Richard Feynman."},
+          {type: "pdf", label: "Download Feynman Notes", src: "articles/The Feynman Lectures on Quantum Mechanics.pdf", embed: false, },
+          {type: "pdf", label: "View Lecture Notes", src: "articles/The Feynman Lectures on Quantum Mechanics.pdf", embed: true, caption: "Feynman Lecture Notes" },
+          {type: "link", label: "Read more about Richard Feynman", url: "https://en.wikipedia.org/wiki/Richard_Feynman", note: "Wikipedia" }
         ]
       },
       {
-        id: "quantum",
-        title: "Quantum Mechanics Basics",
+        id: "Thinking",
+        title: "Thinking what to write",
         blocks: [
-          { type: "heading", text: "The wave function" },
-          { type: "text", text: "Write the second physics article here." }
         ]
       }
     ]
   },
 
-  cloud: {
-    tag: "Technology",
-    title: "The Future of Cloud Computing",
-    date: "2026-10-08",
+  cloud:{  //cloud for physics
+    tag: "Physics",
+    title: "Fascinating world of physics and its applications",
+    date: "2026-10-12",
     parts: [
       {
         id: "intro",
-        title: "What Is Cloud Computing?",
-        date: "2026-10-08",
+        title: "What is Physics?",
+        date: "2026-10-12",
         blocks: [
-          { type: "text", text: "Write the first cloud article here." }
+          { type: "text", text: "Write the firstarticle here." }
         ]
       },
       {
-        id: "distributed",
-        title: "Distributed Systems Explained",
+        id: "Modern-Physics",
+        title: "Modern Physics",
         blocks: [
           { type: "text", text: "Write the second cloud article here." }
         ]

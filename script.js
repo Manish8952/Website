@@ -51,16 +51,6 @@ form.addEventListener('submit', async (e) => {
     }
 });
 
-// --- 3. ABOUT POP-UP ---
-const aboutDialog = document.getElementById('about-dialog');
-document.getElementById('about-link').addEventListener('click', (e) => {
-    if (typeof aboutDialog.showModal !== 'function') return;  // old browser: fall back to normal link
-    e.preventDefault();
-    aboutDialog.showModal();
-});
-aboutDialog.querySelector('.about-close').addEventListener('click', () => aboutDialog.close());
-aboutDialog.addEventListener('click', (e) => { if (e.target === aboutDialog) aboutDialog.close(); });  // click outside
-
 // --- 4. CONTACT FULL-PAGE VIEW ---
 const contactDialog = document.getElementById('contact-dialog');
 const contactMap = document.getElementById('contact-map');
@@ -82,10 +72,7 @@ document.getElementById('contact-form-link').addEventListener('click', (e) => {
     document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
 });
 
-// --- 5. LATEST PAGE (content comes from latest-data.js) ---
-const latestDialog = document.getElementById('latest-dialog');
-let latestRendered = false;
-
+// --- 5. LATEST (shown on the home page; content comes from latest-data.js) ---
 const el = (tag, cls, text) => {
     const n = document.createElement(tag);
     if (cls) n.className = cls;
@@ -109,6 +96,7 @@ const linkBtn = (l) => {
 };
 
 function renderLatest() {
+    if (!document.getElementById('latest-feed')) return;
     const d = window.LATEST || {};
     const $ = (id) => document.getElementById(id);
 
@@ -162,24 +150,7 @@ function renderLatest() {
         return c;
     });
 }
-
-document.getElementById('latest-link').addEventListener('click', (e) => {
-    if (typeof latestDialog.showModal !== 'function') return;
-    e.preventDefault();
-    if (!latestRendered) { renderLatest(); latestRendered = true; }
-    latestDialog.showModal();
-    latestDialog.scrollTop = 0;
-});
-latestDialog.querySelector('.latest-close').addEventListener('click', () => latestDialog.close());
-// Links like "#contact" inside the Latest page: close it, then scroll to that part of the site
-latestDialog.addEventListener('click', (e) => {
-    const a = e.target.closest('a[href^="#"]');
-    if (!a) return;
-    e.preventDefault();
-    latestDialog.close();
-    const t = document.querySelector(a.getAttribute('href'));
-    if (t) t.scrollIntoView({ behavior: 'smooth' });
-});
+renderLatest();
 
 // --- 6. YOUTUBE VIDEOS above "Let's Connect" (list comes from latest-data.js) ---
 (function () {
@@ -252,3 +223,8 @@ latestDialog.addEventListener('click', (e) => {
     show(0);
     start();
 })();
+// --- 8. OPEN THE CONTACT POP-UP when arriving from another page (index.html?open=contact) ---
+if (new URLSearchParams(location.search).get('open') === 'contact') {
+    document.getElementById('contact-link').click();   // same as clicking Contact in the navbar
+    try { history.replaceState(null, '', location.pathname); } catch (e) { /* ignore on file:// */ }
+}

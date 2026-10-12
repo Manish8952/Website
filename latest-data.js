@@ -46,6 +46,11 @@ window.LATEST = {
       // image: "latest/my-photo.jpg",                       // upload the photo into the "latest" folder
       // link: { label: "Read more", url: "https://example.com" },
       // youtube: "https://www.youtube.com/watch?v=VIDEO_ID" // paste any YouTube link
+    },
+    {
+      date: "2026-10-08",
+      title: "Starting a new project",
+      text: "Excited to begin working on this exciting new venture."
     }
   ]
 };
