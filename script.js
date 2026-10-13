@@ -72,86 +72,17 @@ document.getElementById('contact-form-link').addEventListener('click', (e) => {
     document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
 });
 
-// --- 5. LATEST (shown on the home page; content comes from latest-data.js) ---
+// --- 5. HELPERS (used by the videos section) ---
 const el = (tag, cls, text) => {
     const n = document.createElement(tag);
     if (cls) n.className = cls;
     if (text) n.textContent = text;
     return n;
 };
-const safeUrl = (u) => (/^(https?:\/\/|#|\/|latest\/|[\w-]+\.[\w]+$)/i.test(u || '') ? u : '#');
-const niceDate = (d) => {
-    const dt = new Date(d + 'T00:00:00');
-    return isNaN(dt) ? d : dt.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
-};
 const youtubeId = (v) => {
     const m = String(v || '').match(/(?:youtu\.be\/|v=|\/embed\/|\/shorts\/|\/live\/)([\w-]{11})/) || String(v || '').match(/^([\w-]{11})$/);
     return m ? m[1] : null;
 };
-const linkBtn = (l) => {
-    const a = el('a', 'l-link', l.label || 'Open');
-    a.href = safeUrl(l.url);
-    if (/^https?:/i.test(a.href) && !a.href.startsWith(location.origin)) { a.target = '_blank'; a.rel = 'noopener'; }
-    return a;
-};
-
-function renderLatest() {
-    if (!document.getElementById('latest-feed')) return;
-    const d = window.LATEST || {};
-    const $ = (id) => document.getElementById(id);
-
-    $('latest-updated').textContent = d.lastUpdated ? 'Last updated ' + niceDate(d.lastUpdated) : '';
-
-    if (d.announcement && d.announcement.text) {
-        const box = el('div', 'l-announce');
-        box.append(el('span', '', '📢 ' + d.announcement.text));
-        if (d.announcement.link) box.append(linkBtn(d.announcement.link));
-        $('latest-announce').replaceChildren(box);
-    }
-
-    const fill = (id, secId, items, build) => {
-        $(secId).hidden = !(items && items.length);
-        $(id).replaceChildren(...(items || []).map(build));
-    };
-
-    fill('latest-current', 'sec-current', d.current, (it) => {
-        const c = el('div', 'l-card');
-        c.append(el('h4', '', it.title), el('p', '', it.text));
-        if (typeof it.progress === 'number') {
-            const bar = el('div', 'l-bar'), fillBar = el('span');
-            fillBar.style.width = Math.max(0, Math.min(100, it.progress)) + '%';
-            bar.append(fillBar); c.append(bar);
-        }
-        return c;
-    });
-
-    fill('latest-upcoming', 'sec-upcoming', d.upcoming, (it) => {
-        const li = el('li'), c = el('div', 'l-card');
-        if (it.date) c.append(el('span', 'l-date', it.date));
-        c.append(el('h4', '', it.title), el('p', '', it.text));
-        li.append(c); return li;
-    });
-
-    const updates = (d.updates || []).slice().sort((a, b) => String(b.date).localeCompare(String(a.date)));
-    fill('latest-feed', 'sec-feed', updates, (it) => {
-        const c = el('article', 'l-card');
-        c.append(el('span', 'l-date', niceDate(it.date)), el('h4', '', it.title));
-        if (it.text) c.append(el('p', '', it.text));
-        if (it.image) { const im = el('img', 'l-img'); im.src = safeUrl(it.image); im.alt = it.title || ''; im.loading = 'lazy'; c.append(im); }
-        const yt = youtubeId(it.youtube);
-        if (yt) {
-            const w = el('div', 'l-video'), f = document.createElement('iframe');
-            f.src = 'https://www.youtube-nocookie.com/embed/' + yt; f.title = it.title || 'YouTube video';
-            f.loading = 'lazy'; f.allowFullscreen = true; f.referrerPolicy = 'strict-origin-when-cross-origin';
-            f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
-            w.append(f); c.append(w);
-        }
-        if (it.link) c.append(linkBtn(it.link));
-        return c;
-    });
-}
-renderLatest();
-
 // --- 6. YOUTUBE VIDEOS above "Let's Connect" (list comes from latest-data.js) ---
 (function () {
     const vids = ((window.LATEST && window.LATEST.videos) || [])
