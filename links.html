@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Useful Links | Manish Kumar Majhi</title>
+    <meta name="description" content="Useful links and resources for physics, electronics, AI and technology, collected by Manish Kumar Majhi.">
+    <link rel="canonical" href="https://www.manishkumarmajhi.com.np/links.html">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <script>(function () { var t = localStorage.getItem('theme'); if (t) document.documentElement.setAttribute('data-theme', t); })();</script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <canvas id="bg-canvas" aria-hidden="true"></canvas>
+
+    <header class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">MKM<span>.</span></a>
+            <nav aria-label="Main">
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="index.html?open=contact">Contact</a></li>
+                    <li><a href="links.html" aria-current="page">Useful Links</a></li>
+                    <li>
+                        <button id="theme-toggle" class="theme-btn" aria-label="Toggle theme">
+                            <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                            <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="section">
+        <div class="container lk-wrap">
+            <h1 class="section-title">Useful Links</h1>
+            <p class="section-sub" id="lk-intro"></p>
+            <div id="lk-groups"></div>
+            <p class="lk-empty" id="lk-empty" hidden>No links yet. Add some in links-data.js.</p>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container"><p>&copy; 2026 Manish Kumar Majhi. All rights reserved.</p></div>
+    </footer>
+
+    <script src="links-data.js"></script>
+    <script>
+        // theme toggle
+        document.getElementById('theme-toggle').addEventListener('click', function () {
+            var root = document.documentElement;
+            var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            root.setAttribute('data-theme', next);
+            localStorage.setItem('theme', next);
+        });
+
+        // build the links from links-data.js
+        (function () {
+            var d = window.LINKS || {};
+            var el = function (tag, cls, text) { var n = document.createElement(tag); if (cls) n.className = cls; if (text) n.textContent = text; return n; };
+            var safeUrl = function (u) { u = String(u || '').trim(); return /^(https?:\/\/|mailto:|\/|[\w.-]+\.html)/i.test(u) ? u : '#'; };
+            var safeIcon = function (i) { return /^[\w\- ]+$/.test(i || '') ? i : 'fa-solid fa-link'; };
+            var host = function (u) { try { return new URL(u).hostname.replace(/^www\./, ''); } catch (e) { return ''; } };
+
+            document.getElementById('lk-intro').textContent = d.intro || '';
+            var box = document.getElementById('lk-groups'), count = 0;
+
+            (d.groups || []).forEach(function (g) {
+                var links = (g.links || []).filter(function (l) { return l && l.title && l.url; });
+                if (!links.length) return;
+                var sec = el('section', 'lk-group');
+                sec.append(el('h2', 'lk-heading', g.title || ''));
+                var grid = el('div', 'lk-grid');
+                links.forEach(function (l) {
+                    var a = el('a', 'lk-card'); a.href = safeUrl(l.url);
+                    if (/^https?:/i.test(a.href) && a.hostname !== location.hostname) { a.target = '_blank'; a.rel = 'noopener'; }
+                    var ic = el('span', 'lk-icon'); ic.append(el('i', safeIcon(l.icon)));
+                    var body = el('span', 'lk-body');
+                    body.append(el('strong', '', l.title));
+                    if (l.text) body.append(el('span', 'lk-text', l.text));
+                    var h = host(a.href); if (h) body.append(el('em', 'lk-host', h));
+                    a.append(ic, body, el('i', 'fa-solid fa-arrow-up-right-from-square lk-go'));
+                    grid.append(a); count++;
+                });
+                sec.append(grid); box.append(sec);
+            });
+            document.getElementById('lk-empty').hidden = count > 0;
+        })();
+    </script>
+    <script src="background.js" defer></script>
+</body>
+</html>
