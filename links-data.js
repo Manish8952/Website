@@ -69,7 +69,7 @@ window.LINKS = {
         {title: "Raspberry Pi Projects", url: "https://projects.raspberrypi.org/en/", text: "A platform for sharing and discovering Raspberry Pi projects.", icon: "fa-solid fa-desktop"},
         {title: "Arduino Forum", url: "https://forum.arduino.cc/", text: "A community forum for discussing Arduino projects and troubleshooting.", icon: "fa-solid fa-comments"},
         {title: "Raspberry Pi Forum", url: "https://www.raspberrypi.org/forums/", text: "A community forum for discussing Raspberry Pi projects and troubleshooting.", icon: "fa-solid fa-comments"},
-        {title: "Arduino Projects work",url: "https://projecthub.arduino.cc/", text: "A platform for sharing and discovering Arduino projects.", icon: "fa-solid fa-microchip"}G
+        {title: "Arduino Projects work",url: "https://projecthub.arduino.cc/", text: "A platform for sharing and discovering Arduino projects.", icon: "fa-solid fa-microchip"}
       ]
     },
     {
