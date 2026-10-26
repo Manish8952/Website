@@ -64,7 +64,12 @@ window.LINKS = {
         { title: "Make:", url: "https://makezine.com/", text: "A magazine and website that features DIY electronics projects and tutorials.", icon: "fa-solid fa-wrench" },
         { title:"electronics-lab.com", url: "https://www.electronics-lab.com/", text: "A website that provides electronics projects, circuits, and tutorials.", icon: "fa-solid fa-circuit-board" },
         {title: "FreeCodeCamp", url: "https://www.freecodecamp.org/", text: "A nonprofit organization that offers free coding and electronics tutorials.", icon: "fa-solid fa-code"},
-        {title: "IEEE", url: "https://www.ieee.org/", text: "The Institute of Electrical and Electronics Engineers, a professional organization for electronics engineers.", icon: "fa-solid fa-university"}
+        {title: "IEEE", url: "https://www.ieee.org/", text: "The Institute of Electrical and Electronics Engineers, a professional organization for electronics engineers.", icon: "fa-solid fa-university"},
+        {title: "Arduino Projects", url: "https://create.arduino.cc/projecthub", text: "A platform for sharing and discovering Arduino projects.", icon: "fa-solid fa-microchip"},
+        {title: "Raspberry Pi Projects", url: "https://projects.raspberrypi.org/en/", text: "A platform for sharing and discovering Raspberry Pi projects.", icon: "fa-solid fa-desktop"},
+        {title: "Arduino Forum", url: "https://forum.arduino.cc/", text: "A community forum for discussing Arduino projects and troubleshooting.", icon: "fa-solid fa-comments"},
+        {title: "Raspberry Pi Forum", url: "https://www.raspberrypi.org/forums/", text: "A community forum for discussing Raspberry Pi projects and troubleshooting.", icon: "fa-solid fa-comments"},
+        {title: "Arduino Projects work",url: "https://projecthub.arduino.cc/", text: "A platform for sharing and discovering Arduino projects.", icon: "fa-solid fa-microchip"}G
       ]
     },
     {
