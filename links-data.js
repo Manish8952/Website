@@ -96,6 +96,19 @@ window.LINKS = {
       title: "Other Resources",
       links: [
         { title: "Stack Overflow", url: "https://stackoverflow.com/", text: "A question and answer site for professional and enthusiast programmers.", icon: "fa-solid fa-code" },
+        {title: "Tool for creating Math Animation", url:"https://doenet.org/", text: "A tool for creating interactive math animations and simulations.", icon: "fa-solid fa-calculator"},
+        {title: "Wolfram MathWorld", url:"https://mathworld.wolfram.com/", text: "An extensive online mathematics resource.", icon: "fa-solid fa-calculator"},
+        {title: "Desmos", url:"https://www.desmos.com/", text: "An advanced graphing calculator implemented as a web application.", icon: "fa-solid fa-chart-line"},
+        {title: "GeoGebra", url:"https://www.geogebra.org/", text: "An interactive geometry, algebra, statistics and calculus application.", icon: "fa-solid fa-ruler-combined"},
+        {title: "Math Stack Exchange", url:"https://math.stackexchange.com/", text: "A question and answer site for people studying math at any level.", icon: "fa-solid fa-question"},
+        {title: "MathOverflow", url:"https://mathoverflow.net/", text: "A question and answer site for professional mathematicians.", icon: "fa-solid fa-question"},
+        {title: "Project Euler", url:"https://projecteuler.net/", text: "A website dedicated to a series of computational problems intended to be solved with computer programs.", icon: "fa-solid fa-calculator"},
+        {title: "Brilliant", url:"https://brilliant.org/", text: "An interactive learning platform for math and science.", icon: "fa-solid fa-lightbulb"},
+        {title: "Khan Academy", url:"https://www.khanacademy.org/", text: "A non-profit educational organization that provides free online courses, lessons, and practice in various subjects.", icon: "fa-solid fa-chalkboard-teacher"},
+        {title: "Math insigts", url:"https://mathinsights.org/", text: "A website that provides explanations and visualizations of mathematical concepts.", icon: "fa-solid fa-lightbulb"},
+        {title: "Math is Fun", url:"https://www.mathsisfun.com/", text: "A website that provides explanations and examples of mathematical concepts in a fun and engaging way.", icon: "fa-solid fa-smile"},
+        {title: "Paul's Online Math Notes", url:"http://tutorial.math.lamar.edu/", text: "A website that provides notes and tutorials on various math topics.", icon: "fa-solid fa-book"},
+        {title: "Wolfram Alpha", url:"https://www.wolframalpha.com/", text: "A computational knowledge engine that can solve math problems and provide explanations.", icon: "fa-solid fa-calculator"}
       ]
     }
   ]
